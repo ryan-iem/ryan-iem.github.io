@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" 
-rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div id="about"></div>
     <div id="leaves">
         <img src="./images/leaves.png">
     </div>
@@ -20,34 +20,52 @@ rel="stylesheet">
     </div>
     <div id="header-links">
         <a href="#about">About Me</a> | 
+        <a href="#digitalresume">Digital Resume</a> | 
         <a href="#projects">Projects</a> | 
-        <a href="./blog/">Blog</a> | 
         <a href="#contact">Contact</a> | 
-        <a href="">?</a>
-        <hr>
-    </div>
+        <a href="">🔊🔇??</a>
+    </div><hr>
 </header>
 
-<div id="about"></div>
+<div id="main"></div>
 <div id="profile-section">
     <table id="profile-subsection-table">
         <tr id="profile-info">
-            <td id="profile-info-td-image">
-                <img src="./images/me.jpg">
+            <td id="profile-info-td-rainbow">
+                <div class="rainbow-border">
+                <img id="rainbow-profile" src="./images/me.jpg">
+                </div>
             </td>
-            <td colspan="4" id="profile-info-td-text">
-                <h3 id="profile-info-td-title">Working Holiday Maker in Japan</h3>
-                <p>I pride myself on being a reliable, hard-working and focused person who 
-                    loves learning about new technologies and loves interacting with new 
-                    people. My key interests include Cloud Computing, Networking (Cisco) and 
-                    Programming (Web and Python).</p>
-                <small>I am currently spending a year in Japan to improve my Japanese, immerse 
-                    myself in the culture, and experience a completely different working culture. 
-                    During my time in Japan, I have been freelance English teaching as well as 
-                    working in the hospitality industry in various locations throughout Japan.
-                </small><br><br>
-                <small>Outside of work, I'm very interested in Japanese literature, music, 
-                    coffee and cats 🐱
+            <td id="profile-info-td-badge">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">                
+                <img class="glow-badge" src="./images/expo.png">
+        
+            </td>
+            <td id="profile-info-td-text" colspan="4">
+                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
+                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
+                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
+                    dream of mine. From there, in only three short years, I was able to improve my 
+                    Japanese from complete beginner to near conversational/business-level proficiency 
+                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
+                    time there, I lived in various cities, interacted with people from all walks of 
+                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
+                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
+                    my soft skills and getting me excited about where I would end up next...</p>
+                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
+                    I’ve been passionate about the world of IT since I was young and always knew I would 
+                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
+                    content with my Japanese proficiency and ready to once again take on the world of 
+                    Information Technology.</p>
+                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
+                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
+                    literature, whisky, cafes and cats 🐱</p>
+                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
+                </small><br>
+                <small>Willing to relocate.
                 </small>
             </td>
         </tr>
@@ -213,10 +231,7 @@ rel="stylesheet">
 
 <footer>
     <hr id="footer-hr">
-    <small>This website exists to showcase my creative mind, programming 
-        knowledge and personal interests as well as share some insights into my 
-        life in Japan 🎎
-    </small>
+    <small>好き、が増えると自分の世界も増える</small>
 </footer>
 
 </body>
