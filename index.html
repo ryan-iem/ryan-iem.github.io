@@ -19,18 +19,59 @@
         <h2>Ryan Iem</h2>
     </div>
     <div id="header-links">
-        <a href="#about">About Me</a> | 
-        <a href="#digitalresume">Digital Resume</a> | 
-        <a href="#projects">Projects</a> | 
-        <a href="#contact">Contact</a> | 
-        <a href="">🔊🔇??</a>
+        <a id="profile-section-1" onclick="changeSection(1)">All About Me</a> | 
+        <a id="profile-section-2" onclick="changeSection(2)">Digital Resume</a> | 
+        <a id="profile-section-3" onclick="changeSection(3)">Projects</a> | 
+        <a id="profile-section-4" onclick="changeSection(4)">Contact</a> | 
+        <a>🔊🔇??</a>
     </div><hr>
 </header>
 
 <div id="main"></div>
-<div id="profile-section">
-    <table id="profile-subsection-table">
-        <tr id="profile-info">
+<div id="profile-section" style="display:none">
+    <table id="profile-section-table">
+        <tr id="profile-section-content-1" style="display:none">
+            <td id="profile-info-td-rainbow">
+                <div class="rainbow-border">
+                <img id="rainbow-profile" src="./images/me.jpg">
+                </div>
+            </td>
+            <td id="profile-info-td-text" rowspan="2">
+                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
+                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
+                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
+                    dream of mine. From there, in only three short years, I was able to improve my 
+                    Japanese from complete beginner to near conversational/business-level proficiency 
+                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
+                    time there, I lived in various cities, interacted with people from all walks of 
+                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
+                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
+                    my soft skills and getting me excited about where I would end up next...</p>
+                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
+                    I’ve been passionate about the world of IT since I was young and always knew I would 
+                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
+                    content with my Japanese proficiency and ready to once again take on the world of 
+                    Information Technology.</p>
+                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
+                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
+                    literature, whisky, cafes and cats 🐱</p>
+                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
+                </small><br>
+                <small>Willing to relocate.
+                </small>
+            </td>
+        </tr>
+        <tr>
+            <td id="profile-info-td-badge">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">                
+                <img class="glow-badge" src="./images/expo.png">
+        
+            </td>
+        </tr>
+        <tr id="profile-section-content-2" style="display:none">
             <td id="profile-info-td-rainbow">
                 <div class="rainbow-border">
                 <img id="rainbow-profile" src="./images/me.jpg">
@@ -69,7 +110,86 @@
                 </small>
             </td>
         </tr>
-        <tr id="profile-topic">
+        <tr id="profile-section-content-3" style="display:none">
+            <td id="profile-info-td-rainbow">
+                <div class="rainbow-border">
+                <img id="rainbow-profile" src="./images/me.jpg">
+                </div>
+            </td>
+            <td id="profile-info-td-badge">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">                
+                <img class="glow-badge" src="./images/expo.png">
+        
+            </td>
+            <td id="profile-info-td-text" colspan="4">
+                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
+                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
+                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
+                    dream of mine. From there, in only three short years, I was able to improve my 
+                    Japanese from complete beginner to near conversational/business-level proficiency 
+                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
+                    time there, I lived in various cities, interacted with people from all walks of 
+                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
+                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
+                    my soft skills and getting me excited about where I would end up next...</p>
+                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
+                    I’ve been passionate about the world of IT since I was young and always knew I would 
+                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
+                    content with my Japanese proficiency and ready to once again take on the world of 
+                    Information Technology.</p>
+                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
+                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
+                    literature, whisky, cafes and cats 🐱</p>
+                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
+                </small><br>
+                <small>Willing to relocate.
+                </small>
+            </td>
+        </tr>
+        <tr id="profile-section-content-4" style="display:none">
+            <td id="profile-info-td-rainbow">
+                <div class="rainbow-border">
+                <img id="rainbow-profile" src="./images/me.jpg">
+                </div>
+            </td>
+            <td id="profile-info-td-badge">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">                
+                <img class="glow-badge" src="./images/expo.png">
+        
+            </td>
+            <td id="profile-info-td-text" colspan="4">
+                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
+                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
+                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
+                    dream of mine. From there, in only three short years, I was able to improve my 
+                    Japanese from complete beginner to near conversational/business-level proficiency 
+                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
+                    time there, I lived in various cities, interacted with people from all walks of 
+                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
+                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
+                    my soft skills and getting me excited about where I would end up next...</p>
+                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
+                    I’ve been passionate about the world of IT since I was young and always knew I would 
+                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
+                    content with my Japanese proficiency and ready to once again take on the world of 
+                    Information Technology.</p>
+                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
+                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
+                    literature, whisky, cafes and cats 🐱</p>
+                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
+                </small><br>
+                <small>Willing to relocate.
+                </small>
+            </td>
+        </tr>
+        
+        <tr id="profile-topic" style="display:none">
             <td>
                 <a id="profile-topic-1" onclick="changeTopic(1)">Experience</a>
             </td>
@@ -83,7 +203,7 @@
                 <a id="profile-topic-4" onclick="changeTopic(4)">Volunteering</a>
             </td>
         </tr>
-        <tr id="profile-topic-content-1">
+        <tr id="profile-topic-content-1" style="display:none">
             <td colspan="4">
                 <p class="topic-title">Cloud Engineer Intern</p>
                 <small>National Australia Bank</small><br>

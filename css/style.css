@@ -82,9 +82,11 @@ a:hover, a:active {
     margin: 0px 25px 0px 25px;
 }
 
-#profile-subsection-table {
+#profile-section-table {
+    margin-left: auto;
+    margin-right: auto;
     display: inline-flex;
-    min-height: 800px;
+    min-width: 1011px;
 }
 
 #profile-info-td-rainbow {
@@ -104,12 +106,11 @@ a:hover, a:active {
 }
 
 #profile-topic td {
+    /* this is just so it maxes out all the time */
+    width: 500px;
     padding-bottom: 15px;
-}
-
-#profile-topic td {
-    width: 25%;
     text-align: center;
+
 }
 
 @keyframes fadeIn {
@@ -193,6 +194,10 @@ a:hover, a:active {
 
 #profile-info-td-title {
     margin-top: -10px;
+}
+
+#profile-info-td-text p {
+    text-align: justify;
 }
 
 /* for debugging */
