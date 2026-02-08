@@ -16,7 +16,7 @@ hr {
     min-width: 100%;
     min-height: 100vh;
     max-height: 125%; 
-    opacity: 10%;
+    opacity: 20%;
     z-index: 1;
     overflow-x: hidden;
     pointer-events: none;
@@ -35,16 +35,16 @@ header {
     display: block;
     */
     height: 60px;
-    background-color: #222222;
+    background-color: transparent;
     top: 0px;
     position: sticky;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 
 
-#header-name {
+/* #header-name {
     display: inline-block;
     padding-bottom: 5px;
     margin-left: 20%;
@@ -54,10 +54,14 @@ header {
 
 #header-name h2 {
     margin: 0;
-}
+} */
 
 #header-links {
-    display: inline-block;
+    text-align: center;
+}
+
+#header-links a {
+    margin: 0px 15px;
 }
 
 /* header a text {
@@ -71,6 +75,7 @@ a:link, a:visited {
 
 a:hover, a:active {
     color: rgb(225, 225, 225);
+    cursor: pointer;
 }
 
 #main {
@@ -79,38 +84,46 @@ a:hover, a:active {
 }
 
 #profile-section {
-    margin: 0px 25px 0px 25px;
+    /* margin: 0px 25px 0px 25px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    margin: 0;
 }
 
 #profile-section-table {
     margin-left: auto;
     margin-right: auto;
-    display: inline-flex;
-    min-width: 1011px;
 }
 
 #profile-info-td-rainbow {
     padding: 25px;
-    display: inline-flex;
+    /* display: inline-flex; */
+    align-items: center;
 }
 
-#profile-info-td-badge {
+/* #profile-info-td-badge {
     width: 303.2px;
     padding: 25px;
     display: inline-flex;
-}
+} */
 
 .glow-badge {
     width: 50px;
     height: 50px;
 }
 
-#profile-topic td {
+#profile-topic {
     /* this is just so it maxes out all the time */
-    width: 500px;
-    padding-bottom: 15px;
+    /* position: absolute; */
+    min-width: 200px;
     text-align: center;
+}
 
+#profile-topic a {
+    display: block;
+    margin: 25px;
 }
 
 @keyframes fadeIn {
@@ -122,9 +135,20 @@ a:hover, a:active {
     }
 }
 
-@keyframes spin1 { 100% { transform:rotate(360deg); } }
-@keyframes spin2 { 100% { transform:rotate(-360deg); } }
-@keyframes idle { 100% {} }
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(1turn);
+	}
+}
 
 /* #profile-info-td-image img {
     height: 250px;
@@ -138,16 +162,10 @@ a:hover, a:active {
 	box-sizing: border-box;
 }
 
-@keyframes rotate {
-	100% {
-		transform: rotate(1turn);
-	}
-}
-
 .rainbow-border {
 	position: relative;
-	width: 250px;
-	height: 250px;
+	width: 300px;
+	height: 300px;
 	border-radius: 50%;
 	overflow: hidden;
 	padding: 2rem;
@@ -168,7 +186,7 @@ a:hover, a:active {
 		background-size: 50% 50%, 50% 50%;
 		background-position: 0 0, 100% 0, 100% 100%, 0 100%;
 		background-image: linear-gradient(#e60012, #e60012), linear-gradient(#0068b7, #0068b7), linear-gradient(#ef6772, #ef6772), linear-gradient(#94c6ed, #94c6ed);
-		animation: rotate 4s linear infinite;
+		animation: rotate 10s linear infinite;
 	    border-radius: 50%;
 
 	}
@@ -186,8 +204,8 @@ a:hover, a:active {
 }
 
 #rainbow-profile {
-    width: 240px;
-	height: 240px;
+    width: 290px;
+	height: 290px;
 	border-radius: 50%;
     z-index: -1;
 }
@@ -198,21 +216,6 @@ a:hover, a:active {
 
 #profile-info-td-text p {
     text-align: justify;
-}
-
-/* for debugging */
-table { 
-    border: 2px solid white;
-} 
-
-table tr, td {
-    border: 2px solid white;
-}
- /* for debugging */
-
-.topic-title {
-    margin-bottom: auto;
-    font-weight: bold;
 }
 
 .topic-hr {
@@ -229,13 +232,22 @@ table tr, td {
 
 footer {
     text-align: center;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     position: fixed;
     bottom: 0px;
-    background-color: #222222;
+    background-color: transparent;
 }
 
 #footer-hr {
     width: 1064px;
     margin-top: 10px;
 }
+
+/* for debugging */
+/* table { 
+    border: 2px solid white;
+} 
+
+table tr, td {
+    border: 2px solid white;
+} */

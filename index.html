@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home Sweet Home</title>
+    <title>Ryan Iem</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Find better way to grab these? -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/utils/Draggable.min.js"></script>
+
     <script type="text/javascript" src="./js/index.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,83 +15,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
+<div id="leaves">
+    <img src="./images/leaves.png">
+</div>
+
 <body>
     <div id="about"></div>
-    <div id="leaves">
-        <img src="./images/leaves.png">
-    </div>
 <header>
-    <div id="header-name">
-        <h2>Ryan Iem</h2>
-    </div>
     <div id="header-links">
-        <a id="profile-section-1" onclick="changeSection(1)">All About Me</a> | 
-        <a id="profile-section-2" onclick="changeSection(2)">Digital Resume</a> | 
-        <a id="profile-section-3" onclick="changeSection(3)">Projects</a> | 
-        <a id="profile-section-4" onclick="changeSection(4)">Contact</a> | 
+        <a id="profile-section-1" onclick="changeSection(1)">Home</a>
+        <a id="profile-section-2" onclick="changeSection(2)">About Me</a>
+        <a id="profile-section-3" onclick="changeSection(3)">Digital Resume</a>
+        <a id="profile-section-4" onclick="changeSection(4)">Projects</a>
+        <a id="profile-section-5" onclick="changeSection(5)">Contact</a>
         <a>🔊🔇??</a>
     </div><hr>
 </header>
 
 <div id="main"></div>
-<div id="profile-section" style="display:none">
+<div id="profile-section">
     <table id="profile-section-table">
+        <!-- Home -->
         <tr id="profile-section-content-1" style="display:none">
-            <td id="profile-info-td-rainbow">
-                <div class="rainbow-border">
-                <img id="rainbow-profile" src="./images/me.jpg">
-                </div>
-            </td>
-            <td id="profile-info-td-text" rowspan="2">
-                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
-                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
-                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
-                    dream of mine. From there, in only three short years, I was able to improve my 
-                    Japanese from complete beginner to near conversational/business-level proficiency 
-                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
-                    time there, I lived in various cities, interacted with people from all walks of 
-                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
-                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
-                    my soft skills and getting me excited about where I would end up next...</p>
-                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
-                    I’ve been passionate about the world of IT since I was young and always knew I would 
-                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
-                    content with my Japanese proficiency and ready to once again take on the world of 
-                    Information Technology.</p>
-                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
-                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
-                    literature, whisky, cafes and cats 🐱</p>
-                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
-                </small><br>
-                <small>Willing to relocate.
-                </small>
+            <td id="profile-info-td-text">
+                <h1 id="profile-info-td-title">Ryan Iem</h1>
+                <h2 style="font-weight:400">Information Technology Graduate</h2>
+                <p>Fan of music, Japanese literature, whisky, cafes and cats 🐱</p>
             </td>
         </tr>
-        <tr>
-            <td id="profile-info-td-badge">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">                
-                <img class="glow-badge" src="./images/expo.png">
         
-            </td>
-        </tr>
+        <!-- About Me -->
         <tr id="profile-section-content-2" style="display:none">
             <td id="profile-info-td-rainbow">
                 <div class="rainbow-border">
                 <img id="rainbow-profile" src="./images/me.jpg">
                 </div>
             </td>
-            <td id="profile-info-td-badge">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">                
-                <img class="glow-badge" src="./images/expo.png">
-        
-            </td>
-            <td id="profile-info-td-text" colspan="4">
+            <td id="profile-info-td-text">
                 <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
                 <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
                     to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
@@ -96,100 +62,33 @@
                     life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
                     on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
                     my soft skills and getting me excited about where I would end up next...</p>
-                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
-                    I’ve been passionate about the world of IT since I was young and always knew I would 
-                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
-                    content with my Japanese proficiency and ready to once again take on the world of 
-                    Information Technology.</p>
                 <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
-                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
-                    literature, whisky, cafes and cats 🐱</p>
-                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
-                </small><br>
-                <small>Willing to relocate.
-                </small>
+                    the latest technologies.</p>
+                <small>P.S. I can probably give you a good Japanese recommendation too 😸
+                </small><br><br>
+                <small>Willing to relocate.</small>
             </td>
         </tr>
+        <!-- Badge display for About Me (TBD?) -->
+        <!-- <tr id="profile-section-content-2-badge" style="display:none">
+            <td id="profile-info-td-badge">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">
+                <img class="glow-badge" src="./images/expo.png">
+                <img class="glow-badge" src="./images/steam.png">                
+                <img class="glow-badge" src="./images/expo.png">
+        
+            </td>
+        </tr> -->
+        
+        <!-- Digital Resume -->
         <tr id="profile-section-content-3" style="display:none">
-            <td id="profile-info-td-rainbow">
-                <div class="rainbow-border">
-                <img id="rainbow-profile" src="./images/me.jpg">
-                </div>
-            </td>
-            <td id="profile-info-td-badge">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">                
-                <img class="glow-badge" src="./images/expo.png">
-        
-            </td>
             <td id="profile-info-td-text" colspan="4">
-                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
-                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
-                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
-                    dream of mine. From there, in only three short years, I was able to improve my 
-                    Japanese from complete beginner to near conversational/business-level proficiency 
-                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
-                    time there, I lived in various cities, interacted with people from all walks of 
-                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
-                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
-                    my soft skills and getting me excited about where I would end up next...</p>
-                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
-                    I’ve been passionate about the world of IT since I was young and always knew I would 
-                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
-                    content with my Japanese proficiency and ready to once again take on the world of 
-                    Information Technology.</p>
-                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
-                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
-                    literature, whisky, cafes and cats 🐱</p>
-                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
-                </small><br>
-                <small>Willing to relocate.
-                </small>
+                <h3 id="profile-info-td-title">In progress (this doesn't appear on the page ey)</h3>
             </td>
         </tr>
-        <tr id="profile-section-content-4" style="display:none">
-            <td id="profile-info-td-rainbow">
-                <div class="rainbow-border">
-                <img id="rainbow-profile" src="./images/me.jpg">
-                </div>
-            </td>
-            <td id="profile-info-td-badge">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">                
-                <img class="glow-badge" src="./images/expo.png">
-        
-            </td>
-            <td id="profile-info-td-text" colspan="4">
-                <h3 id="profile-info-td-title">Motivated, adventurous, and eager to learn.</h3>
-                <p>After a brief year at NAB as a Technology Intern, I made the difficult decision 
-                    to say goodbye and move to Japan on a Working Holiday Visa to pursue a lifelong 
-                    dream of mine. From there, in only three short years, I was able to improve my 
-                    Japanese from complete beginner to near conversational/business-level proficiency 
-                    (~N2 level) all through self-study - something I deeply pride myself on. During my 
-                    time there, I lived in various cities, interacted with people from all walks of 
-                    life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
-                    on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
-                    my soft skills and getting me excited about where I would end up next...</p>
-                <p>However, even throughout my time in Japan, IT always remained at the back of my mind. 
-                    I’ve been passionate about the world of IT since I was young and always knew I would 
-                    eventually return to it. After taking time off to realise my lifelong dream, I’m now 
-                    content with my Japanese proficiency and ready to once again take on the world of 
-                    Information Technology.</p>
-                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
-                    the latest technologies. Then, outside of work, I'm a big fan of music, Japanese 
-                    literature, whisky, cafes and cats 🐱</p>
-                <small>P.S. I can probably also give you a good Japanese recommendation or two 😸
-                </small><br>
-                <small>Willing to relocate.
-                </small>
-            </td>
-        </tr>
-        
-        <tr id="profile-topic" style="display:none">
+        <!-- Digital Resume sub-sections menu -->
+        <!-- <tr id="profile-topic" style="display:none">
             <td>
                 <a id="profile-topic-1" onclick="changeTopic(1)">Experience</a>
             </td>
@@ -202,10 +101,17 @@
             <td>
                 <a id="profile-topic-4" onclick="changeTopic(4)">Volunteering</a>
             </td>
-        </tr>
+        </tr> -->
+        <div id="profile-topic" style="display:none">
+            <a id="profile-topic-1" onclick="changeTopic(1)">Experience</a>
+            <a id="profile-topic-2" onclick="changeTopic(2)">Education</a>
+            <a id="profile-topic-3" onclick="changeTopic(3)">Skills & Interests</a>
+            <a id="profile-topic-4" onclick="changeTopic(4)">Volunteering</a>
+        </div>
+        <!-- Digital Resume sub-sections content -->
         <tr id="profile-topic-content-1" style="display:none">
             <td colspan="4">
-                <p class="topic-title">Cloud Engineer Intern</p>
+                <h3>Cloud Engineer Intern</h3>
                 <small>National Australia Bank</small><br>
                 <small>Jan 2022 - Jun 2023</small><br><br>
                 <small>Rotation 2 - Cloud Migration Execution (CME)</small><br>
@@ -235,7 +141,7 @@
         </tr>
         <tr id="profile-topic-content-2" style="display:none">
             <td colspan="4">
-                <p class="topic-title">Bachelor of Information Technology</p>
+                <h3>Bachelor of Information Technology</h3>
                 <small>RMIT University</small><br>
                 <small>2019 - 2021</small><br>
                 <small>
@@ -250,7 +156,7 @@
                         <li>Minor in Cisco Networking</li>
                     </ul>
                 </small><hr class="topic-hr">
-                <p class="topic-title">Certifications</p>
+                <h3>Certifications</h3>
                 <small>
                     <ul>
                         <li>Using Terraform to Manage Applications and Infrastructure (A Cloud Guru | A Pluralsight Company)</li>
@@ -318,9 +224,24 @@
                 </small>
             </td>
         </tr>
-    </table><hr>
-</div>
 
+        <!-- Projects -->
+        <tr id="profile-section-content-4" style="display:none">
+            <td id="profile-info-td-text">
+                <h3 id="profile-info-td-title">To be done :)</h3>
+            </td>
+        </tr>
+
+        <!-- Contact -->
+        <tr id="profile-section-content-5" style="display:none">
+            <td id="profile-info-td-text">
+                <h3 id="profile-info-td-title">To be done :)</h3>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+<!-- 
 <div id="projects"></div>
 <div id="project-section">
     <div>
@@ -347,7 +268,7 @@
             <input>
         </form>
     </div>
-</div>
+</div> -->
 
 <footer>
     <hr id="footer-hr">
