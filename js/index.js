@@ -79,7 +79,7 @@ function changeTopic(selection) {
     document.getElementById("profile-section-content-1").style = "display: ''";
     document.getElementById("profile-section-content-1").style.animation = "fadeIn 3s";
     document.getElementById("leaves-bg").style.animation = "fadeInBg 30s"; // 20s
-    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 6s"; // 20s
+    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 12s"; // 20s
     // alert("what")
 // }
 

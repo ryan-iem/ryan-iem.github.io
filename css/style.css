@@ -2,6 +2,8 @@ html {
     background-color: #222222;
     font-family: "Roboto", sans-serif;
     color: white;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 hr {
@@ -28,7 +30,7 @@ hr {
     height: 100%;
     width: 100%;
     position: absolute;
-    opacity: 20%;
+    opacity: 15%;
     z-index: -1;
 }
 
@@ -146,7 +148,7 @@ header {
         color: white;
     }
     to {
-        color: #5389b2
+        color: #7cb2db
 ;
     }
 }
@@ -157,7 +159,7 @@ header {
         opacity: 0;
     }
     to {
-        opacity: 0.2;
+        opacity: 0.15;
     }
 }
 
@@ -251,7 +253,7 @@ header {
 }
 
 #profile-info-td-title-fn {
-    color: #5389b2;
+    color: #7cb2db;
 }
 
 #profile-info-td-text p {
