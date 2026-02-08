@@ -30,7 +30,7 @@ function changeSection(selection) {
         document.getElementById("profile-topic").style = "display: ''"; // fix
         document.getElementById("profile-topic-1").style = "text-decoration: underline;";
         document.getElementById("profile-topic-content-1").style = "display: ''";
-        document.getElementById("profile-topic-content-1").style.animation = "fadeIn 4s";
+        document.getElementById("profile-topic-content-1").style.animation = "fadeIn 1s";
         // document.getElementById("profile-topic-content-1").style.animation = "fadeOut 10s";
 
         // document.getElementById("profile-section-content-2-badge").style = "display: ''";
@@ -43,7 +43,7 @@ function changeSection(selection) {
         }
         document.getElementById("profile-topic").style = "display: none";
         document.getElementById("profile-section-content-" + selection).style = "display: ''";
-        document.getElementById("profile-section-content-" + selection).style.animation = "fadeIn 2.5s";
+        document.getElementById("profile-section-content-" + selection).style.animation = "fadeIn 1s";
         // alert("what")
         // code to bring back the damn badges
     }
@@ -58,7 +58,7 @@ function changeTopic(selection) {
     }
     document.getElementById("profile-topic-" + selection).style = "text-decoration: underline; cursor: pointer;";
     document.getElementById("profile-topic-content-" + selection).style = "display: ''";
-    document.getElementById("profile-topic-content-" + selection).style.animation = "fadeIn 3s";
+    document.getElementById("profile-topic-content-" + selection).style.animation = "fadeIn 1s";
 }
 
 // uhhh is this needed lol. maybe dont use hrefs that link back to itself
@@ -71,14 +71,14 @@ function changeTopic(selection) {
     // alert("made it");
 
 if (startup == 0) {
-  //first startup slower fade in
-  for (i = 1; i <= 5; i++) {
+
+    //first startup slower fade in
+    for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-1").style = "display: none";
         }
         document.getElementById("profile-section-content-1").style = "display: ''";
         document.getElementById("profile-section-content-1").style.animation = "fadeIn 5s";
-        // document.getElementById("profile-section-content-1").style.animation = "fadeOut 5s";
-        document.getElementById("leaves").style.animation = "fadeIn 15s";
+        document.getElementById("leaves").style.animation = "fadeIn 20s";
 }
 
 startup = 1;
