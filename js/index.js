@@ -1,4 +1,4 @@
-let startup = 0
+// let startup = 0
 // let defaultTopicSelection = 1
 // alert("hehestat");
 
@@ -70,15 +70,17 @@ function changeTopic(selection) {
     // changeSection(1);
     // alert("made it");
 
-if (startup == 0) {
+// if (startup == 0) {
 
     //first startup slower fade in
     for (i = 1; i <= 5; i++) {
-            document.getElementById("profile-section-content-1").style = "display: none";
-        }
-        document.getElementById("profile-section-content-1").style = "display: ''";
-        document.getElementById("profile-section-content-1").style.animation = "fadeIn 5s";
-        document.getElementById("leaves").style.animation = "fadeIn 20s";
-}
+        document.getElementById("profile-section-content-1").style = "display: none";
+    }
+    document.getElementById("profile-section-content-1").style = "display: ''";
+    document.getElementById("profile-section-content-1").style.animation = "fadeIn 3s";
+    document.getElementById("leaves-bg").style.animation = "fadeInBg 30s"; // 20s
+    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 6s"; // 20s
+    // alert("what")
+// }
 
-startup = 1;
+// startup = 1;

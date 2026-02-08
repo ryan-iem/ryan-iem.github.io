@@ -15,18 +15,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
-<div id="leaves"><img src="./images/leaves.png"></div>
 
 <body>
+<div id="leaves-bg"></div>
 <div id="about"></div>
 <header>
     <div id="header-links">
-        <a id="profile-section-1" onclick="changeSection(1)">Home</a>
-        <a id="profile-section-2" onclick="changeSection(2)">About Me</a>
-        <a id="profile-section-3" onclick="changeSection(3)">Digital Resume</a>
-        <a id="profile-section-4" onclick="changeSection(4)">Projects</a>
-        <a id="profile-section-5" onclick="changeSection(5)">Contact</a>
-    </div><hr>
+        <div id="profile-section-1" onclick="changeSection(1)"><a>Home</a></div>
+        <div id="profile-section-2" onclick="changeSection(2)"><a>About Me</a></div>
+        <div id="profile-section-3" onclick="changeSection(3)"><a>Digital Resume</a></div>
+        <div id="profile-section-4" onclick="changeSection(4)"><a>Projects</a></div>
+        <div id="profile-section-5" onclick="changeSection(5)"><a>Contact</a></div>
+    </div>
+    <!-- <hr> -->
 </header>
 
 <div id="main"></div>
@@ -35,7 +36,7 @@
         <!-- Home -->
         <tr id="profile-section-content-1" style="display:none">
             <td id="profile-info-td-text">
-                <h1 id="profile-info-td-title">Ryan Iem</h1>
+                <h1 id="profile-info-td-title"><span id="profile-info-td-title-fn">Ryan</span> Iem</h1>
                 <h2 style="font-weight:400">Information Technology Graduate</h2>
                 <p>Fan of music, Japanese literature, whisky, cafes and cats 🐱</p>
             </td>
