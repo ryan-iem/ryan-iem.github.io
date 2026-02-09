@@ -134,13 +134,14 @@ header {
 #profile-topic {
     /* this is just so it maxes out all the time */
     /* position: absolute; */
-    min-width: 150px;
-    padding-right: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
     text-align: center;
 }
 
 #profile-topic div {
     display: block;
+    min-width: 175px;
     /* margin: 25px; */
     padding: 10% 25px;
 }
