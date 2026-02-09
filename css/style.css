@@ -30,7 +30,7 @@ hr {
     height: 100%;
     width: 100%;
     position: absolute;
-    opacity: 15%;
+    opacity: 20%;
     z-index: -1;
 }
 
@@ -122,8 +122,13 @@ header {
     margin: 0;
 }
 
+#profile-section-table tr hr {
+    margin-top: 20px;   
+    margin-bottom: 20px;   
+}
+
 #profile-info-td-rainbow {
-    padding: 42px;
+    padding-right: 42px;
     /* display: inline-flex; */
     align-items: center;
 }
@@ -142,9 +147,10 @@ header {
 #profile-topic {
     /* this is just so it maxes out all the time */
     /* position: absolute; */
-    padding-left: 50px;
+    /* padding-left: 50px; */
     padding-right: 50px;
-    text-align: center;
+    text-align: left;
+    /* border-left: 1px solid white; */
 }
 
 /* messy. fix later? */
@@ -168,7 +174,7 @@ header {
     display: block;
     min-width: 175px;
     /* margin: 25px; */
-    padding: 10% 25px;
+    padding: 10% 15px;
 }
 
 #profile-topic div:hover {
@@ -186,26 +192,6 @@ header {
     text-decoration: none;
 }
 
-@keyframes fadeInColour {
-    from {
-        color: white;
-    }
-    to {
-        color: #7cb2db
-;
-    }
-}
-
-/* Custom fadeIn for leaves-bg since I changed it to a div 🙄 */
-@keyframes fadeInBg {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.15;
-    }
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -218,6 +204,15 @@ header {
 @keyframes fadeOut {
     from {
         opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInDelay {
+    from {
+        opacity: 0;
     }
     to {
         opacity: 0;
@@ -240,6 +235,36 @@ header {
     }
     to {
         opacity: 0.1;
+    }
+}
+
+@keyframes fadeInColour {
+    from {
+        color: white;
+    }
+    to {
+        color: #7cb2db
+;
+    }
+}
+
+@keyframes fadeInColourDelay {
+    from {
+        color: white;
+    }
+    to {
+        color: white;
+;
+    }
+}
+
+/* Custom fadeIn for leaves-bg since I changed it to a div 🙄 */
+@keyframes fadeInBg {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.20;
     }
 }
 
@@ -320,6 +345,10 @@ header {
 
 #profile-info-td-text p {
     text-align: justify;
+}
+
+#reload-btn {
+    cursor: pointer;
 }
 
 .topic-hr {

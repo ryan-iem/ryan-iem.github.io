@@ -1,4 +1,4 @@
-let startup = 0
+// let startup = 0;
 // let defaultTopicSelection = 1
 // alert("hehestat");
 
@@ -41,7 +41,7 @@ function fadeOutHeader() {
 
 // Changing whole page section
 function changeSection(selection) {
-
+    startup = 1;
     if (selection == 3) { // If Digital Resume section
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
@@ -101,13 +101,16 @@ function changeTopic(selection) {
         document.getElementById("profile-section-content-1").style = "display: none";
     }
     document.getElementById("profile-section-content-1").style = "display: ''";
-    document.getElementById("profile-section-content-1").style.animation = "fadeIn 3s";
-    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 6s";
-    document.getElementById("header-links").style.animation = "fadeIn 21s" // default: 21s
+    document.getElementById("profile-section-content-1").style.animation = "fadeInDelay 0.1s ease, fadeIn 2.5s ease 0.1s";
+    
+    document.getElementById("leaves-bg").style.animation = "fadeInDelay 1.5s ease, fadeInBg 6s ease 1.5s"; // default: 20s
+    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColourDelay 2s ease, fadeInColour 6s ease 2s";
+    
+    document.getElementById("header-links").style.animation = "fadeInDelay 4s ease, fadeIn 4s ease 4s" // first animation, time, type, second animation, time, type, delay
     // document.getElementById("header-links").style.animation = "fadeIn 21s, fadeOut 6s ease 21s"; // default: 21s
     // document.getElementById("header-links").style.animation = "fadeInHeader 1s ease, fadeOutHeader 1s ease 1s"; // default: 21s *this is for testing a new feature*
     // document.getElementById("header-links").style.animationFillMode = "forwards";
-    document.getElementById("leaves-bg").style.animation = "fadeInBg 18s"; // default: 20s
-    // startup = 1;
+    // document.getElementById("leaves-bg").style.animation = "fadeInBg 18s"; // default: 20s
+    startup = 1;
     // alert("what")
 // }

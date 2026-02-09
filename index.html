@@ -23,7 +23,7 @@
     <!-- <div id="header-links" onmouseenter="fadeInHeader()" onmouseleave="fadeOutHeader()"> -->
     <div id="header-links">
         <div id="profile-section-1" onclick="changeSection(1)"><a>Home</a></div>
-        <div id="profile-section-2" onclick="changeSection(2)"><a>About Me</a></div>
+        <div id="profile-section-2" onclick="changeSection(2)"><a>Profile</a></div>
         <div id="profile-section-3" onclick="changeSection(3)"><a>Digital Resume</a></div>
         <div id="profile-section-4" onclick="changeSection(4)"><a>Projects</a></div>
         <div id="profile-section-5" onclick="changeSection(5)"><a>Contact</a></div>
@@ -39,7 +39,7 @@
             <td id="profile-info-td-text">
                 <h1 id="profile-info-td-title"><span id="profile-info-td-title-fn">Ryan</span> Iem</h1>
                 <h2 style="font-weight:400">Information Technology Graduate</h2>
-                <p>Fan of music, Japanese literature, whisky, cafes and cats 🐱</p>
+                <p>Japanese literature, whisky, music, cafes and cats <span id="reload-btn" onclick="location.reload()">🐱</span></p>
             </td>
         </tr>
         
@@ -102,7 +102,7 @@
             </td>
         </tr> -->
         <div id="profile-topic" style="display:none">
-            <div onclick="changeTopic(1)"><a id="profile-topic-1">Experience 💻</a></div>
+            <div onclick="changeTopic(1)"><a id="profile-topic-1">Experience 🧑‍💼</a></div>
             <div onclick="changeTopic(2)"><a id="profile-topic-2">Education 📚</a></div>
             <div onclick="changeTopic(3)"><a id="profile-topic-3">Skills & Interests 🧩</a></div>
             <div onclick="changeTopic(4)"><a id="profile-topic-4">Volunteering ✋</a></div>
@@ -129,11 +129,11 @@
         <tr id="profile-topic-content-2" style="display:none">
             <td colspan="4">
                 <h3>Bachelor of Information Technology</h3>
-                <small>RMIT University</small><br>
+                <p>RMIT University</p>
                 <small>2019 - 2021</small><br><br>
                 <small>Mixed major involving Web & Mobile Computing, Security & Cloud Computing and Software Systems Development with a minor in Cisco Networking</small>
                 <br>
-                <hr class="topic-hr">
+                <hr>
                 <small>Azure Fundamentals - AZ-900 (Microsoft)</small><br>
                 <small>Using Terraform to Manage Applications and Infrastructure (A Cloud Guru | A Pluralsight Company)</small>
             </td>
@@ -185,24 +185,13 @@
         </tr>
         <tr id="profile-topic-content-4" style="display:none">
             <td colspan="4">
-                <p class="topic-title">Junior Barista</p>
-                <small>Homestead Café (City of Casey)</small><br>
-                <small>May 2018 - Mar 2019</small><br>
-                <small>
-                    <ul>
-                        <li>Took coffee and other beverage orders and prepared them for customers quickly and effectively</li>
-                        <li>Assisted kitchen staff in preparing various food items</li>
-                    </ul>
-                </small><hr class="topic-hr">
-                <p class="topic-title">Festival Volunteer</p>
-                <small>Melbourne Japanese Summer Festival</small><br>
+                <h3>Event Staff</h3>
+                <p>Evolution Championship Series (Japan)</p>
+                <small>Apr 2024</small>
+                <hr class="topic-hr">
+                <h3>Festival Staff</h3>
+                <p>Melbourne Japanese Summer Festival</p>
                 <small>Feb 2019</small>
-                <small>
-                    <ul>
-                        <li>Greeted visitors and answered general questions about the festival and festival events</li>
-                        <li>Assisted in managing the giveaway book stall and handled gold coin donations for the festival</li>
-                    </ul>
-                </small>
             </td>
         </tr>
 
