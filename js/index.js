@@ -27,8 +27,13 @@ function changeSection(selection) {
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
         }
+        for (j = 1; j <= 4; j++) {
+            document.getElementById("profile-topic-" + j).style = "text-decoration: '';";
+            document.getElementById("profile-topic-content-" + j).style = "display: none";
+        }
+
         document.getElementById("profile-topic").style = "display: ''"; // fix
-        document.getElementById("profile-topic-1").style = "text-decoration: underline;";
+        document.getElementById("profile-topic-1").style = "text-decoration: underline; text-decoration-color: #7cb2db; text-underline-offset: 6px;";
         document.getElementById("profile-topic-content-1").style = "display: ''";
         document.getElementById("profile-topic-content-1").style.animation = "fadeIn 1s";
         // document.getElementById("profile-topic-content-1").style.animation = "fadeOut 10s";
@@ -37,9 +42,9 @@ function changeSection(selection) {
     } else {
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
-            for (j = 1; j <= 4; j++) {
-                document.getElementById("profile-topic-content-" + j).style = "display: none";
-            }
+        }
+        for (j = 1; j <= 4; j++) {
+            document.getElementById("profile-topic-content-" + j).style = "display: none";
         }
         document.getElementById("profile-topic").style = "display: none";
         document.getElementById("profile-section-content-" + selection).style = "display: ''";
@@ -56,7 +61,7 @@ function changeTopic(selection) {
         document.getElementById("profile-topic-" + i).style = "cursor: pointer";
         document.getElementById("profile-topic-content-" + i).style = "display: none";
     }
-    document.getElementById("profile-topic-" + selection).style = "text-decoration: underline; cursor: pointer;";
+    document.getElementById("profile-topic-" + selection).style = "text-decoration: underline; text-decoration-color: #7cb2db; text-underline-offset: 6px;";
     document.getElementById("profile-topic-content-" + selection).style = "display: ''";
     document.getElementById("profile-topic-content-" + selection).style.animation = "fadeIn 1s";
 }
@@ -79,7 +84,7 @@ function changeTopic(selection) {
     document.getElementById("profile-section-content-1").style = "display: ''";
     document.getElementById("profile-section-content-1").style.animation = "fadeIn 3s";
     document.getElementById("leaves-bg").style.animation = "fadeInBg 30s"; // 20s
-    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 12s"; // 20s
+    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 6s"; // 20s
     // alert("what")
 // }
 
