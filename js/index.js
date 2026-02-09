@@ -22,20 +22,20 @@ function parallaxIt(e, target, movement) {
 
 function fadeInHeader() {
     // if (startup == 1) {
-        // document.getElementById("header-links").style = "display: '';";
-        document.getElementById("header-links").style.animationFillMode = "forwards";
-        document.getElementById("header-links").style.animation = "fadeInHeader 1s";
+        // document.getElementById("header").style = "display: '';";
+        // document.getElementById("header").style.animationFillMode = "forwards";
+        document.getElementById("header").style.animation = "fadeInHeader 0.5s";
         // alert("hehe")
 
-        // document.getElementById("header-links").style = "opacity: 1;";
+        // document.getElementById("header").style = "opacity: 1;";
     // }
 }
 
 function fadeOutHeader() {
     // if (startup == 1) {
-        document.getElementById("header-links").style.animationFillMode = "forwards";
-        document.getElementById("header-links").style.animation = "fadeOutHeader 1s";
-        // document.getElementById("header-links").style = "opacity: 0.1;";
+        // document.getElementById("header").style.animationFillMode = "forwards";
+        document.getElementById("header").style.animation = "fadeOutHeader 0.5s";
+        // document.getElementById("header").style = "opacity: 0.1;";
     // }
 }
 
@@ -106,10 +106,10 @@ function changeTopic(selection) {
     document.getElementById("leaves-bg").style.animation = "fadeInDelay 1.5s ease, fadeInBg 6s ease 1.5s"; // default: 20s
     document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColourDelay 2s ease, fadeInColour 6s ease 2s";
     
-    document.getElementById("header-links").style.animation = "fadeInDelay 4s ease, fadeIn 4s ease 4s" // first animation, time, type, second animation, time, type, delay
-    // document.getElementById("header-links").style.animation = "fadeIn 21s, fadeOut 6s ease 21s"; // default: 21s
-    // document.getElementById("header-links").style.animation = "fadeInHeader 1s ease, fadeOutHeader 1s ease 1s"; // default: 21s *this is for testing a new feature*
-    // document.getElementById("header-links").style.animationFillMode = "forwards";
+    document.getElementById("header").style.animation = "fadeInDelay 3.5s ease, fadeIn 2s ease 3.5s, fadeOutHeader 1s ease 5.5s" // first animation, time, type, second animation, time, type, delay
+    // document.getElementById("header").style.animation = "fadeIn 21s, fadeOut 6s ease 21s"; // default: 21s
+    // document.getElementById("header").style.animation = "fadeInHeader 1s ease, fadeOutHeader 1s ease 1s"; // default: 21s *this is for testing a new feature*
+    // document.getElementById("header").style.animationFillMode = "forwards";
     // document.getElementById("leaves-bg").style.animation = "fadeInBg 18s"; // default: 20s
     startup = 1;
     // alert("what")

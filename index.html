@@ -19,9 +19,9 @@
 <body>
 <div id="leaves-bg"></div>
 <div id="about"></div>
-<header>
-    <!-- <div id="header-links" onmouseenter="fadeInHeader()" onmouseleave="fadeOutHeader()"> -->
+<header id="header" onmouseover="fadeInHeader()" onmouseout="fadeOutHeader()">
     <div id="header-links">
+    <!-- <div id="header-links"> -->
         <div id="profile-section-1" onclick="changeSection(1)"><a>Home</a></div>
         <div id="profile-section-2" onclick="changeSection(2)"><a>Profile</a></div>
         <div id="profile-section-3" onclick="changeSection(3)"><a>Digital Resume</a></div>
@@ -62,7 +62,7 @@
                     on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
                     my soft skills and getting me excited about where I would end up next...</p>
                 <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
-                    the latest technologies.</p>
+                    the latest technologies.</p><br>
                 <small>P.S. I can probably give you a good Japanese recommendation too 😸
                 </small><br><br>
                 <small>Willing to relocate.</small>
@@ -86,25 +86,10 @@
                 <h3 id="profile-info-td-title">In progress (this doesn't appear on the page ey)</h3>
             </td>
         </tr>
-        <!-- Digital Resume sub-sections menu -->
-        <!-- <tr id="profile-topic" style="display:none">
-            <td>
-                <a id="profile-topic-1" onclick="changeTopic(1)">Experience</a>
-            </td>
-            <td>
-                <a id="profile-topic-2" onclick="changeTopic(2)">Education</a>
-            </td>
-            <td>
-                <a id="profile-topic-3" onclick="changeTopic(3)">Skills & Interests</a>
-            </td>
-            <td>
-                <a id="profile-topic-4" onclick="changeTopic(4)">Volunteering</a>
-            </td>
-        </tr> -->
         <div id="profile-topic" style="display:none">
             <div onclick="changeTopic(1)"><a id="profile-topic-1">Experience 🧑‍💼</a></div>
             <div onclick="changeTopic(2)"><a id="profile-topic-2">Education 📚</a></div>
-            <div onclick="changeTopic(3)"><a id="profile-topic-3">Skills & Interests 🧩</a></div>
+            <div onclick="changeTopic(3)"><a id="profile-topic-3">Skills 🧩</a></div>
             <div onclick="changeTopic(4)"><a id="profile-topic-4">Volunteering ✋</a></div>
         </div>
         <!-- Digital Resume sub-sections content -->
@@ -133,7 +118,7 @@
                 <small>2019 - 2021</small><br><br>
                 <small>Mixed major involving Web & Mobile Computing, Security & Cloud Computing and Software Systems Development with a minor in Cisco Networking</small>
                 <br>
-                <hr>
+                <hr class="topic-hr">
                 <small>Azure Fundamentals - AZ-900 (Microsoft)</small><br>
                 <small>Using Terraform to Manage Applications and Infrastructure (A Cloud Guru | A Pluralsight Company)</small>
             </td>

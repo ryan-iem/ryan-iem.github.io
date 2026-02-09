@@ -46,12 +46,14 @@ header {
     text-align: center;
     display: block;
     */
-    height: 60px;
+    height: 45px;
     background-color: transparent;
     top: 0px;
-    position: sticky;
+    position: static;
     align-items: center;
+    opacity: 0.1;
     padding-top: 5px;
+    padding-bottom: 30px;
 }
 
 /* #header-name {
@@ -68,8 +70,10 @@ header {
 
 #header-links {
     text-align: center;
-    animation-fill-mode: forwards;
-    /* opacity: 0.1; */
+}
+
+#header:hover {
+    opacity: 1;
 }
 
 #header-links div {
