@@ -1,4 +1,4 @@
-// let startup = 0
+let startup = 0
 // let defaultTopicSelection = 1
 // alert("hehestat");
 
@@ -18,6 +18,25 @@ function parallaxIt(e, target, movement) {
         x: (relX - $this.width() / 2) / $this.width() * movement,
         y: (relY - $this.height() / 2) / $this.height() * movement
     });
+}
+
+function fadeInHeader() {
+    // if (startup == 1) {
+        // document.getElementById("header-links").style = "display: '';";
+        document.getElementById("header-links").style.animationFillMode = "forwards";
+        document.getElementById("header-links").style.animation = "fadeInHeader 1s";
+        // alert("hehe")
+
+        // document.getElementById("header-links").style = "opacity: 1;";
+    // }
+}
+
+function fadeOutHeader() {
+    // if (startup == 1) {
+        document.getElementById("header-links").style.animationFillMode = "forwards";
+        document.getElementById("header-links").style.animation = "fadeOutHeader 1s";
+        // document.getElementById("header-links").style = "opacity: 0.1;";
+    // }
 }
 
 // Changing whole page section
@@ -83,9 +102,12 @@ function changeTopic(selection) {
     }
     document.getElementById("profile-section-content-1").style = "display: ''";
     document.getElementById("profile-section-content-1").style.animation = "fadeIn 3s";
-    document.getElementById("leaves-bg").style.animation = "fadeInBg 30s"; // 20s
-    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 6s"; // 20s
+    document.getElementById("profile-info-td-title-fn").style.animation = "fadeInColour 6s";
+    document.getElementById("header-links").style.animation = "fadeIn 21s" // default: 21s
+    // document.getElementById("header-links").style.animation = "fadeIn 21s, fadeOut 6s ease 21s"; // default: 21s
+    // document.getElementById("header-links").style.animation = "fadeInHeader 1s ease, fadeOutHeader 1s ease 1s"; // default: 21s *this is for testing a new feature*
+    // document.getElementById("header-links").style.animationFillMode = "forwards";
+    document.getElementById("leaves-bg").style.animation = "fadeInBg 18s"; // default: 20s
+    // startup = 1;
     // alert("what")
 // }
-
-// startup = 1;

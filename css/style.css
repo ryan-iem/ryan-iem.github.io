@@ -68,6 +68,8 @@ header {
 
 #header-links {
     text-align: center;
+    animation-fill-mode: forwards;
+    /* opacity: 0.1; */
 }
 
 #header-links div {
@@ -103,19 +105,25 @@ header {
 #profile-section {
     /* margin: 0px 25px 0px 25px; */
     display: flex;
-    justify-content: center;
+    justify-content: center; /* todo: change this so only certain pages are center */
     align-items: center;
     height: 80vh;
     margin: 0;
 }
 
-#profile-section-table {
+/* .profile-info-td-tbd {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    width: 550px;
+} */
+
+#profile-section-table tr p {
+    margin: 0;
 }
 
 #profile-info-td-rainbow {
-    padding: 25px;
+    padding: 42px;
     /* display: inline-flex; */
     align-items: center;
 }
@@ -137,6 +145,23 @@ header {
     padding-left: 50px;
     padding-right: 50px;
     text-align: center;
+}
+
+/* messy. fix later? */
+#profile-topic-content-1 td {
+    width: 600px;
+}
+
+#profile-topic-content-2 td {
+    width: 600px;
+}
+
+#profile-topic-content-3 td {
+    width: 600px;
+}
+
+#profile-topic-content-4 td {
+    width: 600px;
 }
 
 #profile-topic div {
@@ -196,6 +221,25 @@ header {
     }
     to {
         opacity: 0;
+    }
+}
+
+@keyframes fadeInHeader {
+    from {
+        opacity: 0.1;
+    }
+    to {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes fadeOutHeader {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.1;
     }
 }
 
@@ -279,6 +323,8 @@ header {
 }
 
 .topic-hr {
+    margin-top: 20px;   
+    margin-bottom: 20px;   
     border-style: dotted;
 }
 
