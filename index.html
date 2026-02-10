@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 
 <body>
+
 <div id="leaves-bg"></div>
-<div id="about"></div>
 <header id="header" onmouseover="fadeInHeader()" onmouseout="fadeOutHeader()">
     <div id="header-links">
     <!-- <div id="header-links"> -->
@@ -32,13 +32,15 @@
 </header>
 
 <div id="main"></div>
+
 <div id="profile-section">
     <table id="profile-section-table">
+        
         <!-- Home -->
         <tr id="profile-section-content-1" style="display:none">
             <td id="profile-info-td-text">
                 <h1 id="profile-info-td-title"><span id="profile-info-td-title-fn">Ryan</span> Iem</h1>
-                <h2 style="font-weight:400">Information Technology Graduate</h2>
+                <h2>Information Technology Graduate</h2>
                 <p>Japanese literature, whisky, music, cafes and cats <span id="reload-btn" onclick="location.reload()">🐱</span></p>
             </td>
         </tr>
@@ -60,179 +62,168 @@
                     time there, I lived in various cities, interacted with people from all walks of 
                     life, and had the amazing and once-in-a-lifetime opportunity to represent Australia 
                     on the world stage at Expo 2025 Osaka. All of which greatly contributed to bettering 
-                    my soft skills and getting me excited about where I would end up next...</p>
-                <p>You’ll find me motivated about IT, adventurous in my problem-solving and eager to learn 
+                    my soft skills and getting me excited about where I would end up next...</p><br>
+                <p>You’ll find me <b>motivated</b> about IT, <b>adventurous</b> in my problem-solving and <b>eager to learn</b> 
                     the latest technologies.</p><br>
                 <small>P.S. I can probably give you a good Japanese recommendation too 😸
                 </small><br><br>
                 <small>Willing to relocate.</small>
             </td>
         </tr>
-        <!-- Badge display for About Me (TBD?) -->
-        <!-- <tr id="profile-section-content-2-badge" style="display:none">
-            <td id="profile-info-td-badge">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">
-                <img class="glow-badge" src="./images/expo.png">
-                <img class="glow-badge" src="./images/steam.png">                
-                <img class="glow-badge" src="./images/expo.png">
-        
-            </td>
-        </tr> -->
-        
-        <!-- Digital Resume -->
+
+        <!-- Digital Resume  -->
         <tr id="profile-section-content-3" style="display:none">
-            <td id="profile-info-td-text" colspan="4">
-                <h3 id="profile-info-td-title">In progress (this doesn't appear on the page ey)</h3>
-            </td>
-        </tr>
-        <div id="profile-topic" style="display:none">
-            <div onclick="changeTopic(1)"><a id="profile-topic-1">Experience 🧑‍💼</a></div>
-            <div onclick="changeTopic(2)"><a id="profile-topic-2">Education 📚</a></div>
-            <div onclick="changeTopic(3)"><a id="profile-topic-3">Skills 🧩</a></div>
-            <div onclick="changeTopic(4)"><a id="profile-topic-4">Volunteering ✋</a></div>
-        </div>
-        <!-- Digital Resume sub-sections content -->
-        <tr id="profile-topic-content-1" style="display:none">
-            <td>
-                <h3>Executive Assistant to Chief Executive Officer/Bartender</h3> 
-                <p>Ishikiri International Ltd.</p>
-                <small>Oct 2025 - Feb 2026 (Hybrid)</small><br><br>
-                <small>Supporting the Chief Executive Officer with internal operations/discrete requests</small><br>
-                <small>Supporting the Ishikiri International Japan-based bar</small><br><br>
-                <small><i>Japanese, Marketing, Sales Management, Booking Systems, Human Resources (HR)</i></small>
-            <br>
-            <hr class="topic-hr">
-                <h3>Cloud Engineer Intern</h3> 
-                <p>National Australia Bank</p>
-                <small>Jan 2022 - Jun 2023 (Full-time)</small><br><br>
-                <small>Rotation 2 - Cloud Migration Execution (CME)</small><br>
-                <small>Rotation 1 - Cloud Cost Optimisation (FinOps)</small><br><br>
-                <small><i>Cloud Services, Cloudability, FinOps, Terraform, Information Technology</i></small>
-            </td>
-        </tr>
-        <tr id="profile-topic-content-2" style="display:none">
-            <td colspan="4">
-                <h3>Bachelor of Information Technology</h3>
-                <p>RMIT University</p>
-                <small>2019 - 2021</small><br><br>
-                <small>Mixed major involving Web & Mobile Computing, Security & Cloud Computing and Software Systems Development with a minor in Cisco Networking</small>
+            <div id="profile-topic" style="display:none">
+                <div onclick="changeTopic(1)"><a id="profile-topic-1">Experience 🧑‍💼</a></div>
+                <div onclick="changeTopic(2)"><a id="profile-topic-2">Education 📚</a></div>
+                <div onclick="changeTopic(3)"><a id="profile-topic-3">Skills 🧩</a></div>
+                <div onclick="changeTopic(4)"><a id="profile-topic-4">Volunteering ✋</a></div>
+            </div>
+            <!-- Digital Resume sub-sections content -->
+            <tr id="profile-topic-content-1" style="display:none">
+                <td>
+                    <h3>Executive Assistant to Chief Executive Officer/Bartender</h3> 
+                    <p>Ishikiri International Ltd.</p>
+                    <small>Oct 2025 - Feb 2026 (Hybrid)</small><br><br>
+                    <small>Supporting the Chief Executive Officer with internal operations/discrete requests</small><br>
+                    <small>Supporting the Ishikiri International Japan-based bar</small><br><br>
+                    <small><i>Japanese, Marketing, Sales Management, Booking Systems, Human Resources (HR)</i></small>
                 <br>
                 <hr class="topic-hr">
-                <small>Azure Fundamentals - AZ-900 (Microsoft)</small><br>
-                <small>Using Terraform to Manage Applications and Infrastructure (A Cloud Guru | A Pluralsight Company)</small>
-            </td>
-        </tr>
-        <tr id="profile-topic-content-3" style="display:none">
-            <td colspan="4">
-                <p>Programming Languages</p>
-                <small>Python, Java, PHP, SQL, C++</small>
-                <br><br>
-                <p>Software</p>
-                <small>MS Office, VS Code, VirtualBox, PuTTY, Splunk, Cloudability, Terraform, Weka</small>
-                <br><br>
-                <p>Operating Systems</p>
-                <small>Windows 7/10/11, Linux (Ubuntu), macOS</small>
-                <br><br>
-                <p>Platforms</p>
-                <small>GitHub, Azure, AWS, GCP, Cloudability, ServiceNow</small>
-                <br><br>
-                <p>Languages</p>
-                <small>English (Fluent)</small><br>
-                <small>Japanese (Conversational/Business/N2)</small>
-                        <!-- <li>Software</li>
+                    <h3>Cloud Engineer Intern</h3> 
+                    <p>National Australia Bank</p>
+                    <small>Jan 2022 - Jun 2023 (Full-time)</small><br><br>
+                    <small>Rotation 2 - Cloud Migration Execution (CME)</small><br>
+                    <small>Rotation 1 - Cloud Cost Optimisation (FinOps)</small><br><br>
+                    <small><i>Cloud Services, Cloudability, FinOps, Terraform, Information Technology</i></small>
+                </td>
+            </tr>
+            <tr id="profile-topic-content-2" style="display:none">
+                <td colspan="4">
+                    <h3>Bachelor of Information Technology</h3>
+                    <p>RMIT University</p>
+                    <small>2019 - 2021</small><br><br>
+                    <small>Mixed major (Web & Mobile Computing, Security & Cloud Computing and Software Systems Development) with a minor in Cisco Networking</small>
+                    <br>
+                    <hr class="topic-hr">
+                    <small>Azure Fundamentals - AZ-900 (Microsoft)</small><br>
+                    <small>Using Terraform to Manage Applications and Infrastructure (A Cloud Guru | A Pluralsight Company)</small>
+                </td>
+            </tr>
+            <tr id="profile-topic-content-3" style="display:none">
+                <td colspan="4">
+                    <h4>Programming Languages</h4>
+                    <small>Python, Java, PHP, SQL, C++</small>
+                    <br><br>
+                    <h4>Software</h4>
+                    <small>MS Office, VS Code, VirtualBox, PuTTY, Splunk, Cloudability, Terraform, Weka</small>
+                    <br><br>
+                    <h4>Operating Systems</h4>
+                    <small>Windows 7/10/11, Linux (Ubuntu), macOS</small>
+                    <br><br>
+                    <h4>Platforms</h4>
+                    <small>GitHub, Azure, AWS, GCP, Cloudability, ServiceNow</small>
+                    <br><br>
+                    <h4>Languages</h4>
+                    <small>English (Fluent)</small><br>
+                    <small>Japanese (Conversational/Business/N2)</small>
+                            <!-- <li>Software</li>
+                            <ul>
+                                <li>MS Office, Weka, VirtualBox, PuTTY, VS Code, IntelliJ, Splunk</li>
+                            </ul>
+                            <li>Operating Systems</li>
+                            <ul>
+                                <li>Windows 7/10/11, Linux (Ubuntu), macOS</li>
+                            </ul>
+                            <li>Platforms</li>
+                            <ul>
+                                <li>GitHub, Amazon AWS, Microsoft Azure, Google Cloud, Cloudability, Heroku, ServiceNow</li>
+                            </ul>
+                    </small>
+                    <p class="topic-title">Interests</p>
+                    <small>
                         <ul>
-                            <li>MS Office, Weka, VirtualBox, PuTTY, VS Code, IntelliJ, Splunk</li>
+                            <li>Puzzles, music, photography, reading novels, working out, coffee, cats, exploring other cultures</li>
                         </ul>
-                        <li>Operating Systems</li>
+                    </small>
+                    <p class="topic-title">Languages</p>
+                    <small>
                         <ul>
-                            <li>Windows 7/10/11, Linux (Ubuntu), macOS</li>
+                            <li>English (Fluent)</li>
+                            <li>Japanese (Basic/Conversational)</li>
                         </ul>
-                        <li>Platforms</li>
-                        <ul>
-                            <li>GitHub, Amazon AWS, Microsoft Azure, Google Cloud, Cloudability, Heroku, ServiceNow</li>
-                        </ul>
-                </small>
-                <p class="topic-title">Interests</p>
-                <small>
-                    <ul>
-                        <li>Puzzles, music, photography, reading novels, working out, coffee, cats, exploring other cultures</li>
-                    </ul>
-                </small>
-                <p class="topic-title">Languages</p>
-                <small>
-                    <ul>
-                        <li>English (Fluent)</li>
-                        <li>Japanese (Basic/Conversational)</li>
-                    </ul>
-                </small> -->
-            </td>
-        </tr>
-        <tr id="profile-topic-content-4" style="display:none">
-            <td colspan="4">
-                <h3>Event Staff</h3>
-                <p>Evolution Championship Series (Japan)</p>
-                <small>Apr 2024</small>
-                <hr class="topic-hr">
-                <h3>Festival Staff</h3>
-                <p>Melbourne Japanese Summer Festival</p>
-                <small>Feb 2019</small>
-            </td>
+                    </small> -->
+                </td>
+            </tr>
+            <tr id="profile-topic-content-4" style="display:none">
+                <td colspan="4">
+                    <h3>Event Staff</h3>
+                    <p>Evolution Championship Series (Japan)</p>
+                    <small>Apr 2024</small>
+                    <hr class="topic-hr">
+                    <h3>Festival Staff</h3>
+                    <p>Melbourne Japanese Summer Festival</p>
+                    <small>Feb 2019</small>
+                </td>
+            </tr>
         </tr>
 
-        <!-- Projects -->
+        <!-- IN-PROGRESS: Projects -->
+        <!-- TODO: FIX THE WEIRD tr->td->div->div->->etc formatting -->
         <tr id="profile-section-content-4" style="display:none">
             <td>
-                <h3>Website and Digital Resume</h3>
-                <p>GitHub Pages</p>
-                <small>HTML, CSS, JavaScript, jQuery</small><br><br>
-                <small><a href="https://github.com/ryan-iem/ryan-iem.github.io" target="_blank" rel="noopener noreferrer">https://github.com/ryan-iem/ryan-iem.github.io</a></small><br>
+                <div id="project-scroll">
+                    <div class="project-wrapper">
+                        <div class="project-info">
+                            <h3>Website and Digital Resume</h3>
+                                <p>Personal Project</p><br>
+                                <small>HTML, CSS, JavaScript</small><br>
+                                <small>A website to prove to myself that I still got it.</small>
+                        </div>
+                        <div class="project-preview">
+                                <a href="https://github.com/ryan-iem/ryan-iem.github.io" target="_blank" rel="noopener noreferrer"><img src="./images/website.png"></a>
+                        </div>
+                    </div>
+                    <hr class="topic-hr">
+                    <div class="project-wrapper">
+                        <div class="project-info">
+                            <h3>Booker</h3>
+                            <p>Final Year Capstone Project</p><br>
+                            <small>HTML, CSS, JavaScript, PHP, MySQL</small><br>
+                            <small>Online car-sharing service utilising Google Geocoding API</small>
+                        </div>
+                        <div class="project-preview">
+                            <a href="https://github.com/ryan-iem/ryan-iem.github.io" target="_blank" rel="noopener noreferrer"><img src="./images/booker.jpg"></a>
+                        </div>
+                    </div>
+                    <!-- In Progress -->
+                    <hr class="topic-hr">
+                    <div class="project-wrapper">
+                        <div class="project-info">
+                            <h3>Unnamed Project</h3>
+                            <p>Personal Project</p><br>
+                            <small>HTML, CSS, JavaScript, ?</small><br>
+                            <small>In progress...</small>
+                        </div>
+                        <div class="project-preview">
+                            <a href="https://github.com/ryan-iem/ryan-iem.github.io" target="_blank" rel="noopener noreferrer"><img src="./images/space.jpg"></a>
+                        </div>
+                    </div>
+                </div>
             </td>
+            <td id="project-scroll-arrow">↓</td>
         </tr>
 
-        <!-- Contact -->
+        <!-- TBD: Contact -->
         <tr id="profile-section-content-5" style="display:none">
             <td>
-                <h3 class="profile-info-td-tbd">To be done :)</h3>
+                <p>In progress :)</p>
             </td>
         </tr>
-        
+
     </table>
 </div>
-<!-- 
-<div id="projects"></div>
-<div id="project-section">
-    <div>
-        <p>TBD: PROJECT SHOWCASE SECTION !!</p>
-    </div><hr>
 </div>
 
-<div id="blog"></div>
-<div id="blog-section">
-    <div>
-        <p>TBD: BLOG SECTION !!</p>
-    </div><hr>
-</div>
-
-<div id="contact"></div>
-<div id="contact-section">
-    <div id="contact-info">
-        <p>ryan.iem12@gmail.com</p>
-        <p>ryan-iem</p>
-        <p>ryan-iem</p>
-    </div>
-    <div id="contact-form">
-        <form>
-            <input>
-        </form>
-    </div>
-</div> -->
-
-<!-- <footer>
-    <hr id="footer-hr">
-    <small>好き、が増えると自分の世界も増える</small>
-</footer> -->
-
-</div>
 </body>
 </html>

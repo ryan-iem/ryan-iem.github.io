@@ -1,0 +1,14 @@
+/* html {
+    text-align: center;
+} */
+
+body {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse; /* Optional: for single borders */
+    padding: 5px; /* Optional: for better readability */
+    text-align: center;
+}

@@ -1,9 +1,14 @@
 html {
     background-color: #222222;
     font-family: "Roboto", sans-serif;
+    font-weight: 300;
     color: white;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+html h1, h2, h3, h4 {
+    font-weight: 400;
 }
 
 hr {
@@ -32,6 +37,7 @@ hr {
     position: absolute;
     opacity: 20%;
     z-index: -1;
+    filter: blur(2px)
 }
 
 body {
@@ -41,35 +47,16 @@ body {
 }
 
 header {
-    /* height: 50px;
-    padding-top: 5px;
-    text-align: center;
-    display: block;
-    */
+    position: relative;
     height: 45px;
     background-color: transparent;
     top: 0px;
-    position: static;
     align-items: center;
     opacity: 0.1;
     padding-top: 5px;
     padding-bottom: 30px;
-}
-
-/* #header-name {
-    display: inline-block;
-    padding-bottom: 5px;
-    margin-left: 20%;
-    margin-right: 15%;
-    border: none;
-}
-
-#header-name h2 {
-    margin: 0;
-} */
-
-#header-links {
     text-align: center;
+    z-index: 1000;
 }
 
 #header:hover {
@@ -115,12 +102,9 @@ header {
     margin: 0;
 }
 
-/* .profile-info-td-tbd {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 550px;
-} */
+#profile-section h3 {
+    margin-top: 0;
+}
 
 #profile-section-table tr p {
     margin: 0;
@@ -131,17 +115,68 @@ header {
     margin-bottom: 20px;   
 }
 
-#profile-info-td-rainbow {
-    padding-right: 42px;
-    /* display: inline-flex; */
-    align-items: center;
+#profile-section-content-4 td {
+    display: block;
 }
 
-/* #profile-info-td-badge {
-    width: 303.2px;
-    padding: 25px;
+#project-scroll {
+    max-height: 405px; /* Adjust height as needed */
+    overflow-y: auto;  /* Vertical scroll */
+    overflow-x: hidden; /* Prevent horizontal scroll if desired */
+    display: block;    /* Ensure the div respects dimensions */
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#project-scroll::-webkit-scrollbar { 
+    display: none;
+}
+
+#project-scroll-arrow {
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0.1;
+}
+
+.project-info {
+    width: 375px;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    filter: none;
+}
+
+.project-wrapper {
+    text-decoration: none;
+}
+
+/* on hover, change child img element (.project-preview) */
+.project-wrapper:hover .project-preview {
+    filter: grayscale(0%);
+}
+
+.project-wrapper:active .project-preview {
+    filter: grayscale(0%);
+}
+
+.project-preview {
+    display: inline-block;
+    filter: grayscale(100%);
+    transition: filter 0.25s ease-in-out; 
+}
+
+.project-preview img {
+    max-height: 150px;
+    border: 1px solid white;
+}
+
+#profile-info-td-rainbow {
+    margin-top: 10px;
+    margin-right: 42px;
     display: inline-flex;
-} */
+    align-items: center;
+}   
 
 .glow-badge {
     width: 50px;
@@ -157,6 +192,10 @@ header {
     /* border-left: 1px solid white; */
 }
 
+#profile-info-td-text h2 {
+    font-weight: 350;
+}
+
 /* messy. fix later? */
 #profile-topic-content-1 td {
     width: 600px;
@@ -164,6 +203,10 @@ header {
 
 #profile-topic-content-2 td {
     width: 600px;
+}
+
+#profile-topic-content-3 h4 {
+    margin: 0;
 }
 
 #profile-topic-content-3 td {
@@ -174,10 +217,7 @@ header {
     width: 600px;
 }
 
-#profile-section-content-4 a {
-    color: #94c6ed;
-    text-decoration: none;
-}
+
 
 #profile-topic div {
     display: block;
@@ -283,6 +323,24 @@ header {
 	}
 }
 
+@keyframes slideInRightFade {
+    /* Start state (from) */
+    from {
+        /* Move the element 100% of the viewport width to the right,
+           effectively placing it off-screen */
+        transform: translateX(100vw);
+        /* Start with zero opacity (transparent) */
+        opacity: 0;
+    }
+    /* End state (to) */
+    to {
+        /* Move the element back to its original position */
+        transform: translateX(0);
+        /* End with full opacity (visible) */
+        opacity: 1;
+    }
+}
+
 /* #profile-info-td-image img {
     height: 250px;
     margin-right: 25px;
@@ -314,12 +372,12 @@ header {
 		top: -50%;
 		width: 200%;
 		height: 200%;
-		background-color: #399953;
+		/* background-color: #399953; */
 		background-repeat: no-repeat;
 		background-size: 50% 50%, 50% 50%;
 		background-position: 0 0, 100% 0, 100% 100%, 0 100%;
 		background-image: linear-gradient(#e60012, #e60012), linear-gradient(#0068b7, #0068b7), linear-gradient(#ef6772, #ef6772), linear-gradient(#94c6ed, #94c6ed);
-		animation: rotate 10s linear infinite;
+		animation: rotate 50s linear infinite;
 	    border-radius: 50%;
 
 	}
@@ -385,9 +443,9 @@ footer {
 
 /* for debugging */
 /* table { 
-    border: 2px solid white;
+    border: 2px solid rgb(255, 0, 0);
 } 
 
-table tr, td {
+table td {
     border: 2px solid white;
 } */
