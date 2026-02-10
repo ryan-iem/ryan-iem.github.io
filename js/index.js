@@ -5,7 +5,7 @@
 // https://gsap.com/community/forums/topic/17320-background-parallax-effect-on-mouse-move/
 $("html").mousemove(function(e) { // how far the parallax will track the mouse (if 'html', track all over the page)
      // Default is -30
-    parallaxIt(e, "table", -40); // affect only the table element in -> '#profile-section' in -> 'html'
+    parallaxIt(e, "table", -40); // affect table elements in -> '#profile-section' in -> 'html'
 });
 
 function parallaxIt(e, target, movement) {
@@ -41,7 +41,7 @@ function fadeOutHeader() {
 
 // Changing whole page section
 function changeSection(selection) {
-    startup = 1;
+
     if (selection == 3) { // If Digital Resume section
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
@@ -58,9 +58,11 @@ function changeSection(selection) {
         // document.getElementById("profile-topic-content-1").style.animation = "fadeOut 10s";
 
         // document.getElementById("profile-section-content-2-badge").style = "display: ''";
-    } else {
+    } else if (selection == 4) { // if Projects section (all this just for the damn fading animation bruhh)
+        document.getElementById("project-scroll-arrow").style.animation = "fadeInDelay 1.5s ease, fadeIn 3s ease 1.5s, fadeOutHeader 1s ease 4s" // first animation, time, type, second animation, time, type, delay
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
+            // alert("hehe")
         }
         for (j = 1; j <= 4; j++) {
             document.getElementById("profile-topic-content-" + j).style = "display: none";
@@ -70,6 +72,20 @@ function changeSection(selection) {
         document.getElementById("profile-section-content-" + selection).style.animation = "fadeIn 1s";
         // alert("what")
         // code to bring back the damn badges
+    } else {
+        for (i = 1; i <= 5; i++) {
+            document.getElementById("profile-section-content-" + i).style = "display: none";
+            // alert("hehe")
+        }
+        for (j = 1; j <= 4; j++) {
+            document.getElementById("profile-topic-content-" + j).style = "display: none";
+        }
+        document.getElementById("profile-topic").style = "display: none";
+        document.getElementById("profile-section-content-" + selection).style = "display: ''";
+        document.getElementById("profile-section-content-" + selection).style.animation = "fadeIn 1s";
+        // alert("what")
+        // code to bring back the damn badges
+
     }
 }    
 
@@ -97,9 +113,9 @@ function changeTopic(selection) {
 // if (startup == 0) {
 
     //first startup slower fade in
-    for (i = 1; i <= 5; i++) {
-        document.getElementById("profile-section-content-1").style = "display: none";
-    }
+    // for (i = 1; i <= 5; i++) {
+    //     document.getElementById("profile-section-content-"+i).style = "display: none";
+    // }
     document.getElementById("profile-section-content-1").style = "display: ''";
     document.getElementById("profile-section-content-1").style.animation = "fadeInDelay 0.1s ease, fadeIn 2.5s ease 0.1s";
     
