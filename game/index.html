@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="module" src="./js/game.js" defer></script>
+<!-- need to uncomment when publishing to github -->
+<!-- <script type="module" src="./js/game.js" defer></script> -->
+<script src="./js/character.js" defer></script>
+<!-- <script src="./js/enemy.js" defer></script> -->
+<script src="./js/commands.js" defer></script>
+<script src="./js/game.js" defer></script>
 <link rel="stylesheet" href="./css/game.css">
+
 <head>
     <title>Game Test</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
@@ -11,21 +17,34 @@
     <div id="game-wrapper">
 
     <header>
+        <div class="location">
+            <h1>Hub 🏠</h1>
+        </div>
+        <hr>
         <div class="flexbox">
-                <div class="location">
-                    <h1>Hub 🏠</h1>
-                </div>
-                <hr>
                 <!-- <div class="wrapper"> -->
                     <div class="stats">
+                        <div>
                         <h3>HP</h3>
-                        <span class="player-hp">100</span>
-                        <br><br>
-                        <h3 class="player-sp">SP</h3>
-                        <span>50</span>
-                        <br><br>
-                        <h3 class="player-gold">Gold</h3>
-                        <span>10</span>
+                            <span id="player-hp">--</span>
+                            <!-- <span>100</span> -->
+                        </div>
+                        <div>
+                            <h3>SP</h3>
+                            <span id="player-sp">--</span>
+                        </div>
+                        <div>
+                            <h3>ATK</h3>
+                            <span id="player-atk">--</span>
+                        </div>
+                        <div>
+                            <h3>DEF</h3>
+                            <span id="player-def">--</span>
+                        </div>
+                        <!-- <div>
+                            <h3></h3>
+                            <span id="player-gold">--</span>
+                        </div> -->
                     </div>
                     <hr>
                     <div class="navigation">
@@ -35,13 +54,14 @@
                     </div>
                 <!-- </div> -->
         </div>
-    </header>
+    <hr>
 
-        <div class="flexbox">
+    </header>
+    <div class="flexbox">
             <div class="content-wrapper">
                 <p>The hub is as buzzling as ever.</p>
             </div>
-        </div>
+    </div>
 
         <!-- <div id="map" style="display:none">
         </div>
@@ -53,8 +73,19 @@
             <div class="stats"></div>
             <div class="abilities"></div>
         </div> -->
-
+    <div class="flexbox">
+        <div id="admin-center">
+            <h3>⚠️ Admin Center ⚠️</h3>
+            <button onclick="simulateAttackFromBoth()">Simulate attack from both</button>
+            <button onclick="simulateAttackFromPlayer()">Simulate attack from player</button>
+            <button onclick="resetPlayer()">Reset Player HP</button>
+            <button onclick="resetEnemy()">Reset Enemy HP</button>
+            <button onclick="player1Hp()">Player to 1 HP</button>
+            <button onclick="enemy1Hp()">Enemy to 1 HP</button>
+            <h4>Enemy HP: <span id="enemy-hp">--</span></h4>    
+        </div>
     </div>
-
+    </div>
 </body>
+
 </html>

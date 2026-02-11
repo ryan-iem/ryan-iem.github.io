@@ -7,12 +7,17 @@ body {
 }
 
 header {
-    margin-bottom: 25px;
+    width: 75%;
+    align-items: center;
+}
+
+hr {
+    margin: 10px;
 }
 
 #game-wrapper {
-    min-width: 75%;
     min-height: 95%;
+    min-width: 75%;
     border: solid 1px black;
     display: flex;
     align-items: center;
@@ -22,19 +27,26 @@ header {
 .location {
     display: flex;
     justify-content: center; /* Centers content horizontally */
-    align-items: center;
+}
+
+.location h1 {
+    margin-bottom: 0;
 }
 
 .flexbox {
-    min-width: 75%;
-    display: inline-flex; /* Makes the children sit side by side */
-    gap: 20px; /* Adds space between the divs */
+    display: flex;
     justify-content: center;
 }
 
 .stats {
-    align-content: center;
+    align-items: center;
+    display: inline-flex;
     padding: 5px;
+    width: 400px;
+}
+
+.stats div {
+    width: 200px;
 }
 
 .stats h3 {
@@ -54,8 +66,16 @@ header {
     align-items: center;
 }
 
+.content-wrapper p {
+    margin: 0
+}
+
 /* for debugging */
-div {
+/* div {
     border: 1px solid;
     margin: 1px;
+} */
+
+#admin-center {
+    display: inline-grid;
 }
