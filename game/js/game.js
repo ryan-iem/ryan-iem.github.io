@@ -17,7 +17,6 @@ document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 
 // Simulate keyboard combo feature (battle feature)
 keyCount = 0;
-
 function simulateComboSystem() {
     const combo1 = ["ArrowUp", "ArrowRight", " "]; // Slash
     const combo2 = ["ArrowUp", "ArrowRight", "ArrowRight", " "]; // Double slash (costs SP)
