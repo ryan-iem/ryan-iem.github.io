@@ -76,7 +76,11 @@
             <h3>⚠️ Admin Center ⚠️</h3>
             <button onclick="simulateAttackFromBoth()">Simulate attack from both</button>
             <button onclick="simulateAttackFromPlayer()">Simulate attack from player</button>
-            <p style="background-color: green" id="combo-btn" onclick="simulateComboSystem()">Simulate combo system (mouseover)</p>
+            <div id="combo-center">
+                <div class="combo-btn" onclick="testComboSystem()">Test combo system</div>
+                <div class="combo-btn" onclick="simulateComboAttackFromPlayer()">Simulate combo attack</div>
+                <p id="combo-display">&nbsp;</p>
+            </div>
             <button onclick="resetPlayer()">Reset Player HP</button>
             <button onclick="resetEnemy()">Reset Enemy HP</button>
             <button onclick="player1Hp()">Player to 1 HP</button>

@@ -78,4 +78,18 @@ hr {
 
 #admin-center {
     display: inline-grid;
+    text-align: center;
+}
+
+#combo-center {
+    height: 75px;
+}
+
+.combo-btn {
+    margin-bottom: 0;
+    border: 1px solid black;
+}
+
+#combo-display {
+    margin: 0;
 }
