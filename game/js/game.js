@@ -18,7 +18,7 @@ document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 // Simulate an attack (Player -> enemy)
 function simulateAttackFromPlayer() {
 
-    if (enemy.getHp() > 0) {
+    if (enemy.getHp() > 0 && player.getHp() > 0) {
         chance = Math.random();
         if (chance > 0.33) { // 33% chance to miss and 66% chance to hit
 
@@ -40,7 +40,11 @@ function simulateAttackFromPlayer() {
         }
 
     } else {
-        alert("The enemy is already dead!")
+        if (enemy.getHp() == 0) {
+            alert("The enemy is already dead!")
+        } else {
+            alert("You are dead!")
+        }
     }
 
     // player.attack(enemy);
@@ -55,7 +59,7 @@ function simulateAttackFromPlayer() {
 // Simulate a battle (attacking one another)
 function simulateAttackFromBoth() {
 
-    if (enemy.getHp() > 0) {
+    if (enemy.getHp() > 0 && player.getHp() > 0) {
         chance = Math.random();
         if (chance > 0.25) { // 25% chance to miss and 75% chance to hit
 
@@ -98,7 +102,11 @@ function simulateAttackFromBoth() {
         }
 
     } else {
-        alert("The enemy is already dead!")
+        if (enemy.getHp() == 0) {
+            alert("The enemy is already dead!")
+        } else {
+            alert("You are dead!")
+        }
     }
 
     // player.attack(enemy);
