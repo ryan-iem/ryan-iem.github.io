@@ -15,6 +15,38 @@ document.getElementById('player-def').innerHTML = player.getDef();
 document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 // document.getElementById('player-gold').innerHTML = player.getGold();
 
+// Simulate keyboard combo feature (battle feature)
+keyCount = 0;
+
+function simulateComboSystem() {
+    const combo1 = ["ArrowUp", "ArrowRight", " "]; // Slash
+    const combo2 = ["ArrowUp", "ArrowRight", "ArrowRight", " "]; // Double slash (costs SP)
+    const combo3 = ["ArrowUp", "ArrowUp", "ArrowRight", " " ]; // Heavy slash (costs SP)
+    keyCountLimit = combo1.length;
+
+    console.log("Combo Tracking ON");
+    document.getElementById('combo-btn').style = "background-color: red";
+    
+    function comboChecker() {
+        console.log(event.key);
+        if (event.key == combo1[keyCount]) {
+            keyCount++;
+            if (keyCount == keyCountLimit) {
+                console.log("Combo Executed!")
+                keyCount = 0;
+                document.removeEventListener('keydown', comboChecker);
+                document.getElementById('combo-btn').style = "background-color: green";
+            }
+        } else {
+            console.log("Incorrect key pressed. Combo Failed!")
+            keyCount = 0;
+            document.removeEventListener('keydown', comboChecker);
+            document.getElementById('combo-btn').style = "background-color: green";
+        }
+    }
+    document.addEventListener('keydown', comboChecker);  
+}
+
 // Simulate an attack (Player -> enemy)
 function simulateAttackFromPlayer() {
 

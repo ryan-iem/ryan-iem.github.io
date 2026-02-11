@@ -3,8 +3,6 @@
 <!-- need to uncomment when publishing to github -->
 <!-- <script type="module" src="./js/game.js" defer></script> -->
 <script src="./js/character.js" defer></script>
-<!-- <script src="./js/enemy.js" defer></script> -->
-<script src="./js/commands.js" defer></script>
 <script src="./js/game.js" defer></script>
 <link rel="stylesheet" href="./css/game.css">
 
@@ -78,6 +76,7 @@
             <h3>⚠️ Admin Center ⚠️</h3>
             <button onclick="simulateAttackFromBoth()">Simulate attack from both</button>
             <button onclick="simulateAttackFromPlayer()">Simulate attack from player</button>
+            <p style="background-color: green" id="combo-btn" onclick="simulateComboSystem()">Simulate combo system (mouseover)</p>
             <button onclick="resetPlayer()">Reset Player HP</button>
             <button onclick="resetEnemy()">Reset Enemy HP</button>
             <button onclick="player1Hp()">Player to 1 HP</button>
