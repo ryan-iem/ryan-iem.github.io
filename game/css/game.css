@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;     /* Centers content vertically */
+    height: 100vh;           /* Ensures body takes the full viewport height */
+    margin: 0; 
+}
+
+header {
+    width: 75%;
+    align-items: center;
+}
+
+hr {
+    margin: 10px;
+}
+
+#game-wrapper {
+    min-height: 95%;
+    min-width: 75%;
+    border: solid 1px black;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.location {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+}
+
+.location h1 {
+    margin-bottom: 0;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+}
+
+.stats {
+    align-items: center;
+    display: inline-flex;
+    padding: 5px;
+    width: 400px;
+}
+
+.stats div {
+    width: 200px;
+}
+
+.stats h3 {
+    margin: 0;
+}
+
+.navigation {
+    align-content: center;
+    padding: 5px;
+}
+
+.navigation p {
+    margin: 5px;
+}
+
+.content-wrapper {
+    align-items: center;
+}
+
+.content-wrapper p {
+    margin: 0
+}
+
+/* for debugging */
+/* div {
+    border: 1px solid;
+    margin: 1px;
+} */
+
+#admin-center {
+    display: inline-grid;
+}
