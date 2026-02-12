@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- need to uncomment when publishing to github -->
-<!-- <script type="module" src="./js/game.js" defer></script> -->
-<script src="./js/character.js" defer></script>
-<script src="./js/game.js" defer></script>
-<script src="./js/combo.js" defer></script>
-<script src="./js/weapon.js" defer></script>
-<script src="./js/combatManager.js" defer></script>
+<script src="./js/game.js" type="module" defer></script>
 <link rel="stylesheet" href="./css/game.css">
 
 <head>
@@ -85,18 +79,16 @@
     <div class="flexbox">
         <div id="admin-center">
             <h3>⚠️ Admin Center ⚠️</h3>
-            <button onclick="simulateFightLoop(player, enemy)">Simulate full fight</button>
-            <button onclick="simulateAttackFromBoth()">Simulate attack from both (once)</button>
-            <button onclick="simulateAttackFromPlayer()">Simulate attack from player (once)</button>
-            <div id="combo-center">
-                <div class="combo-btn" onclick="testComboSystem()">Test combo system</div>
-                <div class="combo-btn" onclick="simulateComboAttackFromPlayer()">Simulate combo attack</div>
+            <button data-action="sff">Simulate full fight</button>
+            <button data-action="safb">Simulate attack from both (once)</button>
+            <button data-action="safp">Simulate attack from player (once)</button>
+                <button type="button" class="combo-btn" data-action="tcs">Test combo system</button>
+                <button type="button" class="combo-btn" data-action="sca">Simulate combo attack</button>
                 <p id="combo-display">&nbsp;</p>
-            </div>
-            <button onclick="resetPlayer()">Reset Player HP</button>
-            <button onclick="resetEnemy()">Reset Enemy HP</button>
-            <button onclick="player1Hp()">Player to 1 HP</button>
-            <button onclick="enemy1Hp()">Enemy to 1 HP</button>
+            <button data-action="rp">Reset Player HP (10)</button>
+            <button data-action="re">Reset Enemy HP (10)</button>
+            <button data-action="p1hp">Player to 1 HP</button>
+            <button data-action="e1hp">Enemy to 1 HP</button>
             <h4>Enemy HP: <span id="enemy-hp">--</span></h4>    
         </div>
     </div>
