@@ -1,5 +1,5 @@
 export class Character {
-    constructor(hp, maxHp, sp, maxSp, atk, def, gold) {
+    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck) {
         this.hp = hp;
         this.maxHp = maxHp;
         this.maxSp = maxSp;
@@ -7,6 +7,7 @@ export class Character {
         this.atk = atk;
         this.def = def;
         this.gold = gold;
+        this.deck = deck;
     }
 
     getHp() {
@@ -27,6 +28,14 @@ export class Character {
 
     getGold() {
         return this.gold;
+    }
+
+    getDeck() {
+        return this.deck;
+    }
+
+    addDeck(deck) {
+        this.deck = deck;
     }
 
     // Just for testing
