@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- need to uncomment when publishing to github -->
-<!-- <script type="module" src="./js/game.js" defer></script> -->
-<script src="./js/character.js" defer></script>
-<!-- <script src="./js/enemy.js" defer></script> -->
-<script src="./js/commands.js" defer></script>
-<script src="./js/game.js" defer></script>
+<script src="./js/game.js" type="module" defer></script>
 <link rel="stylesheet" href="./css/game.css">
 
 <head>
-    <title>Game Test</title>
+    <title>Roguelike Game</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 </head>
 
@@ -18,7 +13,7 @@
 
     <header>
         <div class="location">
-            <h1>Hub 🏠</h1>
+            <h1>Map</h1>
         </div>
         <hr>
         <div class="flexbox">
@@ -49,8 +44,8 @@
                     <hr>
                     <div class="navigation">
                         <p>Map 🌏</p>
-                        <p>Shop 🛍️</p>
-                        <p>Inventory 👜</p>
+                        <p>Store  🛍️</p>
+                        <p>Cards 🃏</p>
                     </div>
                 <!-- </div> -->
         </div>
@@ -59,29 +54,41 @@
     </header>
     <div class="flexbox">
             <div class="content-wrapper">
-                <p>The hub is as buzzling as ever.</p>
+                <div id="map">
+                    <p>Choose your path...</p><br>
+                    <table id="map-table">
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- <div id="shop" style="display:none">
+                </div>
+
+                <div id="battle" style="display:none">
+                    <div class="stats"></div>
+                    <div class="abilities"></div>
+                </div> -->
             </div>
     </div>
 
-        <!-- <div id="map" style="display:none">
-        </div>
-
-        <div id="shop" style="display:none">
-        </div>
-
-        <div id="battle" style="display:none">
-            <div class="stats"></div>
-            <div class="abilities"></div>
-        </div> -->
     <div class="flexbox">
         <div id="admin-center">
             <h3>⚠️ Admin Center ⚠️</h3>
-            <button onclick="simulateAttackFromBoth()">Simulate attack from both</button>
-            <button onclick="simulateAttackFromPlayer()">Simulate attack from player</button>
-            <button onclick="resetPlayer()">Reset Player HP</button>
-            <button onclick="resetEnemy()">Reset Enemy HP</button>
-            <button onclick="player1Hp()">Player to 1 HP</button>
-            <button onclick="enemy1Hp()">Enemy to 1 HP</button>
+            <button data-action="sff">Simulate full fight</button>
+            <button data-action="safb">Simulate attack from both (once)</button>
+            <button data-action="safp">Simulate attack from player (once)</button>
+                <button type="button" class="combo-btn" data-action="tcs">Test combo system</button>
+                <button type="button" class="combo-btn" data-action="sca">Simulate combo attack</button>
+                <p id="combo-display">&nbsp;</p>
+            <button data-action="rp">Reset Player HP (10)</button>
+            <button data-action="re">Reset Enemy HP (10)</button>
+            <button data-action="p1hp">Player to 1 HP</button>
+            <button data-action="e1hp">Enemy to 1 HP</button>
             <h4>Enemy HP: <span id="enemy-hp">--</span></h4>    
         </div>
     </div>

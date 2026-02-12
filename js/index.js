@@ -59,7 +59,7 @@ function changeSection(selection) {
 
         // document.getElementById("profile-section-content-2-badge").style = "display: ''";
     } else if (selection == 4) { // if Projects section (all this just for the damn fading animation bruhh)
-        document.getElementById("project-scroll-arrow").style.animation = "fadeInDelay 1.5s ease, fadeIn 3s ease 1.5s, fadeOutHeader 1s ease 4s" // first animation, time, type, second animation, time, type, delay
+        document.getElementById("project-scroll-arrow").style.animation = "fadeInDelay 1s ease, fadeIn 3s ease 1s, fadeOutHeader 2s ease 3s" // first animation, time, type, second animation, time, type, delay
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
             // alert("hehe")

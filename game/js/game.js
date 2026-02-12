@@ -1,8 +1,10 @@
 // need to uncomment when publishing to github
-// import { Player } from '/player.js';
+import { Player } from './classes/Player.js';
+import { Character } from './classes/Character.js';
+import * as combat from './combat.js';
 
-const player = new Character(10, 10, 3, 3, 3); // hp, sp, atk, def, gold
-const enemy = new Character(10, 10, 2, 2, 1);
+const player = new Player(10, 10, 5, 5, 3, 3, 3); // hp, maxHp, sp, maxSp, atk, def, gold
+const enemy = new Character(10, 10, 5, 5, 2, 2, 1);
 
 // Test to print player data
 // player.getHp();
@@ -15,108 +17,43 @@ document.getElementById('player-def').innerHTML = player.getDef();
 document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 // document.getElementById('player-gold').innerHTML = player.getGold();
 
-// Simulate an attack (Player -> enemy)
-function simulateAttackFromPlayer() {
-
-    if (enemy.getHp() > 0) {
-        chance = Math.random();
-        if (chance > 0.33) { // 33% chance to miss and 66% chance to hit
-
-            player.attack(enemy);
-            // alert("The enemy has " + enemy.getHp() + " HP remaining!")
-
-            if (enemy.getHp() > 0 && player.getHp() > 0) {
-
-                alert("The enemy takes " + player.getAtk() + " damage!")
-                alert("The enemy has " + enemy.getHp() + " HP remaining!")
-
-            } else {
-                alert("The enemy takes " + player.getAtk() + " damage!")
-                alert("You have slain the enemy!")
-                // TODO: Logic to remove enemy? Rewards?
-            }
-        } else {
-            alert("Your attack misses!")
-        }
-
+const wrapper = document.getElementById('admin-center');
+wrapper.addEventListener('click', (event) => {
+    if (event.target.nodeName === 'BUTTON' && event.target.hasAttribute('data-action')) {
+        const actionType = event.target.getAttribute('data-action');
+        if (actionType == "sff") {
+            combat.simulateFightLoop(player, enemy);
+        } else if (actionType == "safb") {
+            combat.simulateAttackFromBoth(player, enemy);
+        } else if (actionType == "safp") {
+            combat.simulateAttackFromPlayer(player, enemy);
+        } else if (actionType == "tcs") {
+            combat.testComboSystem();
+        } else if (actionType == "sca") {
+            let c = new AbortController();
+            combat.simulateComboAttackFromPlayer(player, enemy, c)
+        } else if (actionType == "rp") {
+            resetPlayer();
+        } else if (actionType == "re") {
+            resetEnemy();
+        } else if (actionType == "p1hp") {
+            player1Hp();
+        } else if (actionType == "e1hp") {
+            enemy1Hp();
+        } 
     } else {
-        alert("The enemy is already dead!")
+        return;
     }
+})
 
-    // player.attack(enemy);
-    // alert("The enemy has " + enemy.getHp() + " HP remaining!")
-    // player.attack(enemy);
-    // alert("The enemy has " + enemy.getHp() + " HP remaining!")
-    document.getElementById('player-hp').innerHTML = player.getHp();
-    document.getElementById('enemy-hp').innerHTML = enemy.getHp();
-
-}
-
-// Simulate a battle (attacking one another)
-function simulateAttackFromBoth() {
-
-    if (enemy.getHp() > 0) {
-        chance = Math.random();
-        if (chance > 0.25) { // 25% chance to miss and 75% chance to hit
-
-            player.attack(enemy);
-            // alert("The enemy has " + enemy.getHp() + " HP remaining!")
-
-            if (enemy.getHp() > 0 && player.getHp() > 0) {
-
-                alert("The enemy takes " + player.getAtk() + " damage!")
-                alert("The enemy has " + enemy.getHp() + " HP remaining!")
-                chance = Math.floor(Math.random() * 2);
-
-                if (chance == 1) {
-                    enemy.attack(player)
-                    alert("You take " + enemy.getAtk() + " damage!")
-                    if (player.getHp() <= 0) {
-                        alert("YOU HAVE BEEN SLAIN")
-                    }
-                } else {
-                    alert("The enemy attack misses!")
-                }
-
-            } else {
-                alert("The enemy takes " + player.getAtk() + " damage!")
-                alert("You have slain the enemy!")
-                // TODO: Logic to remove enemy? Rewards?
-            }
-        } else {
-            alert("Your attack misses!")
-            chance = Math.floor(Math.random() * 2);
-            if (chance == 1) {
-                    enemy.attack(player)
-                    alert("You take " + enemy.getAtk() + " damage!")
-                    if (player.getHp() <= 0) {
-                        alert("YOU HAVE BEEN SLAIN")
-                    }
-                } else {
-                    alert("The enemy attack misses!")
-                }
-        }
-
-    } else {
-        alert("The enemy is already dead!")
-    }
-
-    // player.attack(enemy);
-    // alert("The enemy has " + enemy.getHp() + " HP remaining!")
-    // player.attack(enemy);
-    // alert("The enemy has " + enemy.getHp() + " HP remaining!")
-    document.getElementById('player-hp').innerHTML = player.getHp();
-    document.getElementById('enemy-hp').innerHTML = enemy.getHp();
-
-}
 
 function resetPlayer() {
-    player.setHp(10);
+    player.receiveHp(100);
     document.getElementById('player-hp').innerHTML = player.getHp();
 }
 
 function resetEnemy() {
-    enemy.setHp(10);
+    enemy.receiveHp(10);
     document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 }
 
