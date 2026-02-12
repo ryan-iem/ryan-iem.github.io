@@ -4,10 +4,13 @@
 <!-- <script type="module" src="./js/game.js" defer></script> -->
 <script src="./js/character.js" defer></script>
 <script src="./js/game.js" defer></script>
+<script src="./js/combo.js" defer></script>
+<script src="./js/weapon.js" defer></script>
+<script src="./js/combatManager.js" defer></script>
 <link rel="stylesheet" href="./css/game.css">
 
 <head>
-    <title>Game Test</title>
+    <title>Roguelike Game</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 </head>
 
@@ -16,7 +19,7 @@
 
     <header>
         <div class="location">
-            <h1>Hub 🏠</h1>
+            <h1>Map</h1>
         </div>
         <hr>
         <div class="flexbox">
@@ -47,8 +50,8 @@
                     <hr>
                     <div class="navigation">
                         <p>Map 🌏</p>
-                        <p>Shop 🛍️</p>
-                        <p>Inventory 👜</p>
+                        <p>Store  🛍️</p>
+                        <p>Cards 🃏</p>
                     </div>
                 <!-- </div> -->
         </div>
@@ -57,25 +60,34 @@
     </header>
     <div class="flexbox">
             <div class="content-wrapper">
-                <p>The hub is as buzzling as ever.</p>
+                <div id="map">
+                    <p>Choose your path...</p><br>
+                    <table id="map-table">
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- <div id="shop" style="display:none">
+                </div>
+
+                <div id="battle" style="display:none">
+                    <div class="stats"></div>
+                    <div class="abilities"></div>
+                </div> -->
             </div>
     </div>
 
-        <!-- <div id="map" style="display:none">
-        </div>
-
-        <div id="shop" style="display:none">
-        </div>
-
-        <div id="battle" style="display:none">
-            <div class="stats"></div>
-            <div class="abilities"></div>
-        </div> -->
     <div class="flexbox">
         <div id="admin-center">
             <h3>⚠️ Admin Center ⚠️</h3>
-            <button onclick="simulateAttackFromBoth()">Simulate attack from both</button>
-            <button onclick="simulateAttackFromPlayer()">Simulate attack from player</button>
+            <button onclick="simulateFightLoop(player, enemy)">Simulate full fight</button>
+            <button onclick="simulateAttackFromBoth()">Simulate attack from both (once)</button>
+            <button onclick="simulateAttackFromPlayer()">Simulate attack from player (once)</button>
             <div id="combo-center">
                 <div class="combo-btn" onclick="testComboSystem()">Test combo system</div>
                 <div class="combo-btn" onclick="simulateComboAttackFromPlayer()">Simulate combo attack</div>

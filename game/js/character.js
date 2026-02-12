@@ -49,23 +49,31 @@ class Character {
 
     // I feel like an object shouldn't be able to edit another object's values - should the object should do it itself..? 
     // Look into OOP Encapsulation (changes should be done by ONE'S OWN methods, etc.)
-    attack(enemy) {
+    // attack(enemy) {
+    //     // Damage calculation
+    //     let atk = this.atk;
+    //     let enemyHp = enemy.getHp();
+    //     let calculation = enemyHp - atk;
+
+    //     if (calculation >= 0) {
+    //         // alert("The enemy takes "+atk+" damage!")
+    //         enemy.receiveAttack(atk);
+    //         // return atk;
+    //     } else {
+    //         enemy.setHp(0);
+    //     }
+    // }
+
+    receiveDamage(damage) {
+
         // Damage calculation
-        let atk = this.atk;
-        let enemyHp = enemy.getHp();
-        let calculation = enemyHp - atk;
-
-        if (calculation >= 0) {
-            // alert("The enemy takes "+atk+" damage!")
-            enemy.receiveAttack(atk);
-            // return atk;
+        if (this.hp - damage >= 0) {
+            // Take damage
+            this.hp = this.hp - damage;
         } else {
-            enemy.setHp(0);
+            // Receiving unit dies
+            this.hp = 0;
         }
-    }
-
-    receiveAttack(damage) {
-        this.hp = this.hp - damage;
     }
 
 }

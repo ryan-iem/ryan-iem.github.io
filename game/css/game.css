@@ -30,6 +30,7 @@ hr {
 }
 
 .location h1 {
+    margin-top: 5px;
     margin-bottom: 0;
 }
 
@@ -63,11 +64,28 @@ hr {
 }
 
 .content-wrapper {
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .content-wrapper p {
     margin: 0
+}
+
+#map {
+    display: inline-grid;
+    text-align: center;
+}
+
+#map-table {
+    border: 1px solid;
+}
+
+table tbody, td {
+    border: 1px solid;
+    width: 75px;
+    height: 75px;
 }
 
 /* for debugging */
