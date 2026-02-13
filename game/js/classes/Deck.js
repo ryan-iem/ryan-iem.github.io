@@ -4,7 +4,7 @@ export class Deck {
     constructor(name, description, cards) {
         this.name = name;
         this.description = description;
-        this.cards = cards;
+        this.cards = [];
     }
 
     getName() {

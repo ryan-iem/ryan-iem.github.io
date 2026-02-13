@@ -13,7 +13,7 @@
 
     <header>
         <div class="location">
-            <h1>Map</h1>
+            <h1>Combat</h1>
         </div>
         <hr>
         <div class="flexbox">
@@ -36,10 +36,10 @@
                             <h3>DEF</h3>
                             <span id="player-def">--</span>
                         </div>
-                        <!-- <div>
-                            <h3></h3>
+                        <div>
+                            <h3>GOLD</h3>
                             <span id="player-gold">--</span>
-                        </div> -->
+                        </div>
                     </div>
                     <hr>
                     <div class="navigation">
@@ -53,14 +53,27 @@
     </header>
     <div class="flexbox">
             <div class="content-wrapper">
-                <div id="map">
+                <div id="action">
+                    <!-- <p>Choose your action...</p><br> -->
+                    <table id="action-table">
+                    <p>Choose your card...</p><br>
+                        <tr id="action-choices">
+                            <td>Attack</td>
+                            <td>Defend</td>
+                            <td>Run</td>
+                        </tr>
+                        <tr id="action-cards">
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="map" style="display:none">
                     <p>Choose your path...</p><br>
                     <table id="map-table">
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
+                            <td>Saferoom</td>
+                            <td>Shop</td>
+                            <td>Battle</td>
                         </tr>
                     </table>
                 </div>

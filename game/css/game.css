@@ -82,6 +82,15 @@ hr {
     border: 1px solid;
 }
 
+#action {
+    display: inline-grid;
+    text-align: center;
+}
+
+#action-table {
+    border: 1px solid;
+}
+
 table tbody, td {
     border: 1px solid;
     width: 75px;

@@ -1,3 +1,5 @@
+import { Hand } from './Hand.js';
+
 export class Character {
     constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck) {
         this.hp = hp;
@@ -8,6 +10,7 @@ export class Character {
         this.def = def;
         this.gold = gold;
         this.deck = deck;
+        this.hand = new Hand();
     }
 
     getHp() {
@@ -34,8 +37,16 @@ export class Character {
         return this.deck;
     }
 
+    getHand() {
+        return this.hand;
+    }
+
     addDeck(deck) {
         this.deck = deck;
+    }
+
+    addCardToHand(card) {
+        this.hand.addCard(card)
     }
 
     // Just for testing
