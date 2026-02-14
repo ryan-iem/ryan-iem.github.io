@@ -89,6 +89,7 @@ hr {
 
 #action-table {
     border: 1px solid;
+    padding: 10px;
 }
 
 .action-card {
@@ -106,8 +107,8 @@ hr {
 
 table tbody, td {
     border: 1px solid;
-    width: 75px;
-    height: 75px;
+    width: 200px;
+    max-width: 200px;
 }
 
 /* for debugging */

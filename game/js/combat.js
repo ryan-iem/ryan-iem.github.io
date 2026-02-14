@@ -90,11 +90,11 @@ export function simulateBuffCardComboAttackFromPlayer(player, enemy, c, card) {
 }
 // Simulate keyboard combo feature (for simulateComboAttackFromPlayer)
 export function simulateBuffCardComboAttack(player, enemy, c, card) {
-        let comboString = card.getInput().split(",");  // The last value is the DMG value
-        let keyCountLimit = card.getInput().split(",").length;  // The last value is the DMG value
-        console.log(event.key);
+    let comboString = card.getInput().split(",");  // The last value is the DMG value
+    let keyCountLimit = card.getInput().split(",").length;  // The last value is the DMG value
+    console.log(event.key);
 
-        if (event.key == comboString[keyCount]) {
+    if (event.key == comboString[keyCount]) {
             keyCount++;
             let key = event.key;
 
@@ -113,21 +113,70 @@ export function simulateBuffCardComboAttack(player, enemy, c, card) {
             document.getElementById('combo-display').innerHTML += key + " ";
             if (keyCount == keyCountLimit) {
                 keyCount = 0;
+                let cardId = card.getId();
                 console.log("Combo Executed!")
+                console.log("")
                 c.abort();
+
                 // Since we are simulating usage of a buff card, append buff value to base ATK
                 attack(player, enemy, player.getAtk()+card.getValue());
+
                 // TODO: Remove card from hand after this
+                // If multiple copies of one card, find first hit and just delete that
+                console.log("  Card to remove: "+ card.getName())
+                console.log("  Card to remove ID: "+ cardId)
+
+                //TODO check for value of cardId
+                // Select all elements with the class 'action-card'
+                let htmlCards = document.querySelectorAll('.action-card');
+                // Iterate over the elements to check their value
+                for (const htmlCard of htmlCards) {
+                    console.log(" Looping through cards in HTML")
+                    // If card ID in the HTML matches the selected card's ID
+                    if (htmlCard.getAttribute('data-id') === cardId) {
+                        console.log("  Removed card from HTML");
+                        htmlCard.remove();
+
+                        player.removeCardFromHand(cardId);
+                        console.log("  Removed from hand");
+                        return; // so that we dont remove all cards with same id!
+                    }
+                }
             }
-        } else {
+    } else {
             keyCount = 0;
+            let cardId = card.getId();
             console.log("Incorrect key pressed. Combo Failed!")
             c.abort();
             // document.removeEventListener('keydown', simulateComboAttack(player, enemy));
             document.getElementById('combo-display').innerHTML = "&nbsp;";
+
+            console.log("  Card to remove: "+ card.getName())
+            console.log("  Card to remove ID: "+ cardId)
+
+            // Remove used card
+            let htmlCards = document.querySelectorAll('.action-card');
+            // Iterate over the elements to check their value
+            for (const htmlCard of htmlCards) {
+                    console.log(" Looping through cards in HTML")
+                    // If card ID in the HTML matches the selected card's ID
+                    if (htmlCard.getAttribute('data-id') === cardId) {
+                        console.log("  Removed card from HTML");
+                        htmlCard.remove();
+
+                        player.removeCardFromHand(cardId);
+                        console.log("  Removed from hand");
+                        return; // so that we dont remove all cards with same id!
+                    }
+                }
+            
             // attack(player, enemy, "-1"); // -1 for failed combo attacks
             // TODO: Remove card from hand after this
-        }
+    //TODO: Completely fix this lol
+    player.removeCardFromHand(cardId);
+    console.log("  Removed card from hand");
+    console.log("  Cards in player's hand: " + player.getHandCount());
+    }
 }
 
 export function testComboSystem() {

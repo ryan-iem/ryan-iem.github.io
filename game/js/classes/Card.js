@@ -2,13 +2,18 @@
 // TODO: Add an ID to each card?
 // TODO: Update 'type' to 'action' and keep 'type' for element or something in the future
 export class Card {
-    constructor(name, description, type, input, value, cost) {
+    constructor(id, name, description, type, input, value, cost) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.type = type;
         this.input = input;
         this.value = value;
         this.cost = cost;
+    }
+
+    getId() {
+        return this.id;
     }
 
     getName() {

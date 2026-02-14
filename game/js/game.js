@@ -9,32 +9,44 @@ const player = new Player(10, 10, 5, 5, 3, 3, 3, null, [], []); // hp, maxHp, sp
 const enemy = new Character(15, 15, 5, 5, 3, 2, 1, null, []);
 
 // Note: Combos require a 'spacebar' press at the end!!!
-const testCard1 = new Card("A", "Adds an extra 2 damage to your attack this turn", "buff", "ArrowUp,ArrowRight, ", 2, 3) // name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
-const testCard2 = new Card("B", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
-const testCard3 = new Card("C", "Adds an extra 2 damage to your attack this turn", "buff", "'ArrowUp','ArrowRight',' '", 2, 3)
-const testCard4 = new Card("D", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
+const testCard1 = new Card("1", "Heavy Slash", "Adds an extra 2 damage to your attack this turn", "buff", "ArrowUp,ArrowRight, ", 2, 3) // id, name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
+const testCard2 = new Card("2", "B", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
+const testCard3 = new Card("1", "Heavy Slash", "Adds an extra 2 damage to your attack this turn", "buff", "'ArrowUp','ArrowRight',' '", 2, 3)
+const testCard4 = new Card("2", "D", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
 const playerDeck = new Deck("Player Test Deck", "For testing only!", []);
 const enemyDeck = new Deck("Enemy Test Deck", "For testing only!", []);
+
+// Adding cards to deck
+console.log("Adding 4 cards to player deck");
+console.log("Adding 4 cards to enemy deck");
+playerDeck.addCard(testCard1);
 playerDeck.addCard(testCard1);
 playerDeck.addCard(testCard2);
+playerDeck.addCard(testCard2);
 enemyDeck.addCard(testCard3);
+enemyDeck.addCard(testCard3);
+enemyDeck.addCard(testCard4);
 enemyDeck.addCard(testCard4);
 player.addDeck(playerDeck);
 enemy.addDeck(enemyDeck);
 
-// CHECKING/PRINTING DATA
+// Shuffle player and enemy deck
+console.log("");
+console.log("Shuffling everyone's deck before gameplay...");
+console.log("");
+player.getDeck().shuffle();
+enemy.getDeck().shuffle();
+
 // player.getHp();
 // alert(player.getHp());
 // console.log("Card count: " + deck.getCardCount())
 console.log("As player...")
-console.log(" Drawing two cards and adding to player hand")
-let drawnCard = player.getDeck().drawCard();
-console.log(" Drawn card name: " + drawnCard.getName())
-player.addCardToHand(drawnCard);
-drawnCard = player.getDeck().drawCard();
-console.log(" Drawn card name: " + drawnCard.getName())
-player.addCardToHand(drawnCard);
-player.addCardToHand(drawnCard); // THIS NEEDS TO BE REMOVED LATER
+console.log(" Drawing three cards")
+for (let i = 0; i < 3; i++) {
+    let drawnCard = player.getDeck().drawCard();
+    console.log(" Drawn card name: " + drawnCard.getName())
+    player.addCardToHand(drawnCard);
+}
 console.log(" Cards in player's deck: " + player.getDeck().getCardCount())
 console.log(" Cards in player's hand: " + player.getHandCount());
 
@@ -45,7 +57,7 @@ for (let i = 0; i < player.getHandCount(); i++) {
     let card = player.getCardFromHand(i)
     console.log(" Looping through Player hand: "+i);
     document.getElementById('action-cards').innerHTML += 
-    "<td value='"+ i +"'class='action-card' data-action='" + card.getType() + "'><b>Card: " + card.getName() +
+    "<td data-id='" + card.getId() +"'value='"+ i +"'class='action-card' data-action='" + card.getType() + "'><b>" + card.getName() +
     "</b><br><br>Cost: " + card.getCost() + "<br><br>" + card.getDescription() + "</td>";
 }
 
@@ -53,10 +65,12 @@ console.log("");
 console.log("As enemy...")
 // TODO
 // console.log(" Shuffling deck")
-console.log(" Drawing top card and adding to enemy hand")
-drawnCard = enemy.getDeck().drawCard();
-console.log(" Drawn card name: " + drawnCard.getName())
-enemy.addCardToHand(drawnCard);
+console.log(" Drawing one card")
+for (let i = 0; i < 1; i++) {
+    let drawnCard = enemy.getDeck().drawCard();
+    console.log(" Drawn card name: " + drawnCard.getName())
+    enemy.addCardToHand(drawnCard);
+}
 console.log(" Cards in enemy's deck: " + enemy.getDeck().getCardCount())
 console.log(" Cards in enemy's hand: " + enemy.getHandCount())
 
@@ -68,7 +82,7 @@ document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 document.getElementById('player-gold').innerHTML = player.getGold();
 
 // Will be filled with the selected card from hand (on website)
-let card;
+let card = null;
 
 console.log("");
 // For action-cards and picking a card
@@ -117,8 +131,6 @@ adminWrapper.addEventListener('click', (event) => {
         } else if (actionType == "safb") {
             combat.simulateAttackFromBoth(player, enemy);
         } else if (actionType == "safp") {
-            combat.simulateAttackFromPlayer(player, enemy);
-        } else if (actionType == "attack") {
             combat.simulateAttackFromPlayer(player, enemy);
         } else if (actionType == "awc") {
             // Make sure they've selected a card for this test!

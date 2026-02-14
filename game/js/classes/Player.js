@@ -66,6 +66,17 @@ export class Player {
     addCardToHand(card) {
         this.hand.push(card)
     }
+    
+    // Find first match of ID and remove that!
+    removeCardFromHand(cardId) {
+        for (let i = 0; i < this.hand.length - 1; i++) {
+            let card = this.hand[i];
+            if (card.getId() == cardId) {
+                this.hand.splice(i, 1);
+                return; // stop loop once card is removed
+            }
+        }
+    }
 
     // Just for testing (remove on launch)
     setHp(hp) {
