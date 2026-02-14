@@ -1,7 +1,7 @@
-import { Hand } from './Hand.js';
+// import { Hand } from './Hand.js';
 
 export class Player {
-    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck, decks) {
+    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand) {
         this.hp = hp;
         this.maxHp = maxHp;
         this.maxSp = maxSp;
@@ -12,7 +12,7 @@ export class Player {
         // Change to array?
         this.deck = deck;
         this.decks = decks;
-        this.hand = new Hand();
+        this.hand = hand;
     }
 
     getHp() {
@@ -43,8 +43,20 @@ export class Player {
         return this.decks;
     }
 
-    getHand() {
-        return this.hand;
+    // getHand() {
+    //     return this.hand;
+    // }
+
+    // TODO: Not just return value, but shift/pop this mf out too?
+    // TODO: Make playCard(i)
+    getCardFromHand(i) {
+        // Returns just a reference (for listing cards)
+        return this.hand[i];
+        // return this.hand.shift([i]);
+    }
+
+    getHandCount() {
+        return this.hand.length;
     }
 
     addDeck(deck) {
@@ -52,7 +64,7 @@ export class Player {
     }
 
     addCardToHand(card) {
-        this.hand.addCard(card)
+        this.hand.push(card)
     }
 
     // Just for testing (remove on launch)

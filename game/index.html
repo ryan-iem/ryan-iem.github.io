@@ -54,9 +54,10 @@
     <div class="flexbox">
             <div class="content-wrapper">
                 <div id="action">
-                    <!-- <p>Choose your action...</p><br> -->
+                    <!-- TODO: Have actions appear first then click Attack to get action-cards -->
                     <table id="action-table">
-                    <p>Choose your card...</p><br>
+                        <p>Choose your action...</p><br>
+                        <p>Choose your card...</p><br>
                         <tr id="action-choices">
                             <td>Attack</td>
                             <td>Defend</td>
@@ -94,8 +95,8 @@
             <button data-action="sff">Simulate full fight</button>
             <button data-action="safb">Simulate attack from both (once)</button>
             <button data-action="safp">Simulate attack from player (once)</button>
-                <button type="button" class="combo-btn" data-action="tcs">Test combo system</button>
-                <button type="button" class="combo-btn" data-action="sca">Simulate combo attack</button>
+                <button class="combo-btn" data-action="tcs">Test combo system</button>
+                <button class="combo-btn" data-action="sca">Simulate combo attack</button>
                 <p id="combo-display">&nbsp;</p>
             <button data-action="rp">Reset Player HP (10)</button>
             <button data-action="re">Reset Enemy HP (10)</button>

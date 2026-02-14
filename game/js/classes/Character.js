@@ -1,7 +1,7 @@
-import { Hand } from './Hand.js';
+// import { Hand } from './Hand.js';
 
 export class Character {
-    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck) {
+    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck, hand) {
         this.hp = hp;
         this.maxHp = maxHp;
         this.maxSp = maxSp;
@@ -10,7 +10,7 @@ export class Character {
         this.def = def;
         this.gold = gold;
         this.deck = deck;
-        this.hand = new Hand();
+        this.hand = hand;
     }
 
     getHp() {
@@ -37,8 +37,15 @@ export class Character {
         return this.deck;
     }
 
-    getHand() {
-        return this.hand;
+    // Copied from Player.js but WILL ENEMYS USE THIS?
+    // TODO: Not just return value, but shift/pop this mf out too?
+    getCardFromHand(i) {
+        // return this.hand[i];
+        return this.hand.shift([i]);
+    }
+
+    getHandCount() {
+        return this.hand.length;
     }
 
     addDeck(deck) {
@@ -46,7 +53,7 @@ export class Character {
     }
 
     addCardToHand(card) {
-        this.hand.addCard(card)
+        this.hand.push(card)
     }
 
     // Just for testing

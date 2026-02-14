@@ -32,6 +32,7 @@ export class Deck {
     // Draw top card
     drawCard() {
         if (this.cards.length > 0) {
+            // Grabs first element in deck (top card)
             return this.cards.shift();
             // Grabs last element in deck (technically the bottom card)
             // return this.cards.pop();

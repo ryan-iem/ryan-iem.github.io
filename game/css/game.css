@@ -91,6 +91,19 @@ hr {
     border: 1px solid;
 }
 
+.action-card {
+    border: 2px dotted; 
+    padding: 10px;
+}
+
+.action-card:hover {
+    background-color: aliceblue;
+}
+
+.action-card:active {
+    background-color: rgb(211, 234, 255);
+}
+
 table tbody, td {
     border: 1px solid;
     width: 75px;

@@ -3,9 +3,10 @@
 let keyCount = 0;
 
 // TODO: Move to a combo .json or something
-const combo1 = ["ArrowUp", "ArrowRight", " ", "4"]; // Slash
-const combo2 = ["ArrowUp", "ArrowRight", "ArrowRight", " ", "5"]; // Double slash (costs SP)
-const combo3 = ["ArrowUp", "ArrowUp", "ArrowRight", "ArrowRight", " ", "6"]; // Heavy slash (costs SP)
+// Match the combo[number] with card ComboId
+const combo0 = ["ArrowUp", "ArrowRight", " ", "4"]; // +1 atk buff
+const combo1 = ["ArrowUp", "ArrowDown", "ArrowDown", " ", "5"]; // heal for 2
+const combo2 = ["ArrowUp", "ArrowUp", "ArrowRight", "ArrowRight", " ", "6"];
 
 // TODO: Move ALL into a combo.js file?
 

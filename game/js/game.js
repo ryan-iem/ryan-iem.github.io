@@ -6,13 +6,13 @@ import { Deck } from './classes/Deck.js';
 import * as combat from './combat.js';
 
 const player = new Player(10, 10, 5, 5, 3, 3, 3, null, [], []); // hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand
-const enemy = new Character(10, 10, 5, 5, 2, 2, 1, null, []);
+const enemy = new Character(15, 10, 5, 5, 3, 2, 1, null, []);
 
-const testCard1 = new Card("A", "Adds an extra 1 damage to your attack this turn", "buff", 1, 3)
-const testCard2 = new Card("B", "Instantly heals you for 2 HP", "selfheal", 2, 2)
-const testCard3 = new Card("C", "Adds an extra 1 damage to your attack this turn", "buff", 1, 3)
-const testCard4 = new Card("D", "Instantly heals you for 2 HP", "selfheal", 2, 2)
-const playerDeck = new Deck("Player Test eck", "For testing only!", []);
+const testCard1 = new Card("A", "Adds an extra 1 damage to your attack this turn", "buff", "0", 1, 3) // name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
+const testCard2 = new Card("B", "Instantly heals you for 2 HP", "selfheal", "1", 2, 2)
+const testCard3 = new Card("C", "Adds an extra 1 damage to your attack this turn", "buff", "0", 1, 3)
+const testCard4 = new Card("D", "Instantly heals you for 2 HP", "selfheal", "1", 2, 2)
+const playerDeck = new Deck("Player Test Deck", "For testing only!", []);
 const enemyDeck = new Deck("Enemy Test Deck", "For testing only!", []);
 playerDeck.addCard(testCard1);
 playerDeck.addCard(testCard2);
@@ -35,19 +35,20 @@ console.log(" Drawn card name: " + drawnCard.getName())
 player.addCardToHand(drawnCard);
 player.addCardToHand(drawnCard); // THIS NEEDS TO BE REMOVED LATER
 console.log(" Cards in player's deck: " + player.getDeck().getCardCount())
-console.log(" Cards in player's hand: " + player.getHand().getHandCount());
+console.log(" Cards in player's hand: " + player.getHandCount());
 
 // Loop to go through hand and display each card in hand[] onscreen
-// TODO: Make a way to have the cards be clickable
-let playerHand = player.getHand();
-for (let i = 0; i < playerHand.getHandCount(); i++) {
-    let card = playerHand.getCard(i);
+// TODO: Make a way to have the carvds be clickable
+// TODO: Add a way to track cards (ID?)
+for (let i = 0; i < player.getHandCount(); i++) {
+    let card = player.getCardFromHand(i)
     console.log(" Looping through Player hand: "+i);
     document.getElementById('action-cards').innerHTML += 
-    "<td><a data-action:'" + card.getType() + "'>Card: " + card.getName() +
-    "<br><br>Description: " + card.getDescription() + "</a></td>";
+    "<td value='"+ i +"'class='action-card' data-action='" + card.getType() + "'><b>Card: " + card.getName() +
+    "</b><br><br>Cost: " + card.getCost() + "<br><br>" + card.getDescription() + "</td>";
 }
 
+console.log("");
 console.log("As enemy...")
 // TODO
 // console.log(" Shuffling deck")
@@ -56,7 +57,7 @@ drawnCard = enemy.getDeck().drawCard();
 console.log(" Drawn card name: " + drawnCard.getName())
 enemy.addCardToHand(drawnCard);
 console.log(" Cards in enemy's deck: " + enemy.getDeck().getCardCount())
-console.log(" Cards in enemy's hand: " + enemy.getHand().getHandCount())
+console.log(" Cards in enemy's hand: " + enemy.getHandCount())
 
 document.getElementById('player-hp').innerHTML = player.getHp();
 document.getElementById('player-sp').innerHTML = player.getSp();
@@ -65,11 +66,47 @@ document.getElementById('player-def').innerHTML = player.getDef();
 document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 document.getElementById('player-gold').innerHTML = player.getGold();
 
+// Will be filled with the selected card
+let selectedCard;
+
+console.log("");
+// For action-cards and picking a card
+// Must be done after the cards have been drawn on screen
+// TODO: Fix so you can click on the <b> part too :(
+// TODO: Calculation so player doesn't just select everything. Only let them select up to their current SP
+const cardWrapper = document.getElementById('action-cards');
+cardWrapper.addEventListener('click', (event) => {
+    if (event.target.nodeName === 'TD' && event.target.hasAttribute('data-action')) {
+        
+        // TODO: Loop through this and blah blah
+        document.getElementsByClassName('action-card').style = "background-color: none;"; 
+        let actionType = event.target.getAttribute('data-action');
+        
+        // So we know which card to actually grab from the hand
+        let cardIndex = event.target.getAttribute('value');
+        console.log("Selected card ID: "+ cardIndex)
+
+        if (actionType == "buff") {
+            selectedCard = player.getCardFromHand(cardIndex);
+            console.log("  Buff card selected");
+            // TODO: Don't pull the card out of array yet. Just get a reference
+        } else if (actionType == "selfheal") {
+            selectedCard = player.getCardFromHand(cardIndex);
+            console.log("  Self heal card selected");
+        } 
+        console.log("  Card Combo ID: "+ selectedCard.getComboId());
+        event.target.style = "background-color: rgb(211, 234, 255);";    
+    } else {
+        console.log("Nope");
+        return;
+    }
+})
+
 // For combo related tests in the Admin Center
-const wrapper = document.getElementById('admin-center');
-wrapper.addEventListener('click', (event) => {
+const adminWrapper = document.getElementById('admin-center');
+adminWrapper.addEventListener('click', (event) => {
     if (event.target.nodeName === 'BUTTON' && event.target.hasAttribute('data-action')) {
-        const actionType = event.target.getAttribute('data-action');
+        let actionType = event.target.getAttribute('data-action');
         if (actionType == "sff") {
             combat.simulateFightLoop(player, enemy);
         } else if (actionType == "safb") {
