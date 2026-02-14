@@ -73,6 +73,63 @@ export function simulateFightLoop(player, enemy) {
 }
 
 // COMBO CODES ---
+export function simulateBuffCardComboAttackFromPlayer(player, enemy, c, card) {
+    // This is really strange and only exists so we can pass parameters into the combo system too (custom arrows/dmg/etc.)
+    let signal = c.signal;
+
+    // Turn combo string into array (separated by ',')
+    // let rawComboString = card.getInput();
+    // let comboString = rawComboString.split(",");
+
+    console.log("Combo Tracking ON");
+    console.log("Required comboString: "+card.getInput());
+    document.getElementById('combo-display').innerHTML = "&nbsp;";
+    document.addEventListener('keydown', (event) => {
+        simulateBuffCardComboAttack(player, enemy, c, card);
+    }, { signal: signal })
+}
+// Simulate keyboard combo feature (for simulateComboAttackFromPlayer)
+export function simulateBuffCardComboAttack(player, enemy, c, card) {
+        let comboString = card.getInput().split(",");  // The last value is the DMG value
+        let keyCountLimit = card.getInput().split(",").length;  // The last value is the DMG value
+        console.log(event.key);
+
+        if (event.key == comboString[keyCount]) {
+            keyCount++;
+            let key = event.key;
+
+            if (key == "ArrowUp") {
+                key = "↑";
+            } else if (key == "ArrowDown") {
+                key = "↓";
+            } else if (key == "ArrowLeft") {
+                key = "←";
+            } else if (key == "ArrowRight") {
+                key = "→";
+            } else if (key == " ") {
+                key = "Space";
+            }
+
+            document.getElementById('combo-display').innerHTML += key + " ";
+            if (keyCount == keyCountLimit) {
+                keyCount = 0;
+                console.log("Combo Executed!")
+                c.abort();
+                // Since we are simulating usage of a buff card, append buff value to base ATK
+                attack(player, enemy, player.getAtk()+card.getValue());
+                // TODO: Remove card from hand after this
+            }
+        } else {
+            keyCount = 0;
+            console.log("Incorrect key pressed. Combo Failed!")
+            c.abort();
+            // document.removeEventListener('keydown', simulateComboAttack(player, enemy));
+            document.getElementById('combo-display').innerHTML = "&nbsp;";
+            // attack(player, enemy, "-1"); // -1 for failed combo attacks
+            // TODO: Remove card from hand after this
+        }
+}
+
 export function testComboSystem() {
     console.log("Combo Tracking ON");
     document.getElementById('combo-display').innerHTML = "&nbsp;";

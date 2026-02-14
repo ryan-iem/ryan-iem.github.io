@@ -6,12 +6,13 @@ import { Deck } from './classes/Deck.js';
 import * as combat from './combat.js';
 
 const player = new Player(10, 10, 5, 5, 3, 3, 3, null, [], []); // hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand
-const enemy = new Character(15, 10, 5, 5, 3, 2, 1, null, []);
+const enemy = new Character(15, 15, 5, 5, 3, 2, 1, null, []);
 
-const testCard1 = new Card("A", "Adds an extra 1 damage to your attack this turn", "buff", "0", 1, 3) // name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
-const testCard2 = new Card("B", "Instantly heals you for 2 HP", "selfheal", "1", 2, 2)
-const testCard3 = new Card("C", "Adds an extra 1 damage to your attack this turn", "buff", "0", 1, 3)
-const testCard4 = new Card("D", "Instantly heals you for 2 HP", "selfheal", "1", 2, 2)
+// Note: Combos require a 'spacebar' press at the end!!!
+const testCard1 = new Card("A", "Adds an extra 2 damage to your attack this turn", "buff", "ArrowUp,ArrowRight, ", 2, 3) // name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
+const testCard2 = new Card("B", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
+const testCard3 = new Card("C", "Adds an extra 2 damage to your attack this turn", "buff", "'ArrowUp','ArrowRight',' '", 2, 3)
+const testCard4 = new Card("D", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
 const playerDeck = new Deck("Player Test Deck", "For testing only!", []);
 const enemyDeck = new Deck("Enemy Test Deck", "For testing only!", []);
 playerDeck.addCard(testCard1);
@@ -66,8 +67,8 @@ document.getElementById('player-def').innerHTML = player.getDef();
 document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 document.getElementById('player-gold').innerHTML = player.getGold();
 
-// Will be filled with the selected card
-let selectedCard;
+// Will be filled with the selected card from hand (on website)
+let card;
 
 console.log("");
 // For action-cards and picking a card
@@ -79,7 +80,11 @@ cardWrapper.addEventListener('click', (event) => {
     if (event.target.nodeName === 'TD' && event.target.hasAttribute('data-action')) {
         
         // TODO: Loop through this and blah blah
-        document.getElementsByClassName('action-card').style = "background-color: none;"; 
+        // To reset selected card (if there is one)
+        let actionCards = document.getElementsByClassName('action-card');
+        for (const actionCard of actionCards) {
+            actionCard.style = "background-color: none;"; 
+        }
         let actionType = event.target.getAttribute('data-action');
         
         // So we know which card to actually grab from the hand
@@ -87,14 +92,14 @@ cardWrapper.addEventListener('click', (event) => {
         console.log("Selected card ID: "+ cardIndex)
 
         if (actionType == "buff") {
-            selectedCard = player.getCardFromHand(cardIndex);
+            card = player.getCardFromHand(cardIndex);
             console.log("  Buff card selected");
             // TODO: Don't pull the card out of array yet. Just get a reference
         } else if (actionType == "selfheal") {
-            selectedCard = player.getCardFromHand(cardIndex);
+            card = player.getCardFromHand(cardIndex);
             console.log("  Self heal card selected");
         } 
-        console.log("  Card Combo ID: "+ selectedCard.getComboId());
+        // console.log("  Card Input String: "+ card.getInput());
         event.target.style = "background-color: rgb(211, 234, 255);";    
     } else {
         console.log("Nope");
@@ -113,7 +118,18 @@ adminWrapper.addEventListener('click', (event) => {
             combat.simulateAttackFromBoth(player, enemy);
         } else if (actionType == "safp") {
             combat.simulateAttackFromPlayer(player, enemy);
-        } else if (actionType == "tcs") {
+        } else if (actionType == "attack") {
+            combat.simulateAttackFromPlayer(player, enemy);
+        } else if (actionType == "awc") {
+            // Make sure they've selected a card for this test!
+            if (card) {
+                let c = new AbortController();
+                combat.simulateBuffCardComboAttackFromPlayer(player, enemy, c, card)
+            } else {
+                alert("No card selected!");
+                return;
+            }
+            } else if (actionType == "tcs") {
             combat.testComboSystem();
         } else if (actionType == "sca") {
             let c = new AbortController();
@@ -138,7 +154,7 @@ function resetPlayer() {
 }
 
 function resetEnemy() {
-    enemy.receiveHp(10);
+    enemy.receiveHp(15);
     document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 }
 
