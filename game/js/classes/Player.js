@@ -1,7 +1,7 @@
 // import { Hand } from './Hand.js';
 
 export class Player {
-    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand) {
+    constructor(hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand, buffAtk) {
         this.hp = hp;
         this.maxHp = maxHp;
         this.maxSp = maxSp;
@@ -9,10 +9,11 @@ export class Player {
         this.atk = atk;
         this.def = def;
         this.gold = gold;
-        // Change to array?
+        // Change?
         this.deck = deck;
-        this.decks = decks;
-        this.hand = hand;
+        this.decks = decks;  // An array of decks
+        this.hand = hand; // An array of cards
+        this.buffAtk = buffAtk; // An array of cards
     }
 
     getHp() {
@@ -59,6 +60,14 @@ export class Player {
         return this.hand.length;
     }
 
+    getBuffAtk() {
+        return this.buffAtk;
+    }
+
+    setGold(gold) {
+        this.gold = gold;
+    }
+
     addDeck(deck) {
         this.deck = deck;
     }
@@ -81,6 +90,14 @@ export class Player {
     // Just for testing (remove on launch)
     setHp(hp) {
         this.hp = hp;
+    }
+
+    setAtk(atk) {
+        this.atk = atk;
+    }
+
+    setBuffAtk(buffAtk) {
+        this.buffAtk = buffAtk;
     }
 
     receiveHp(amount) {

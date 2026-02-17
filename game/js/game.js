@@ -5,24 +5,43 @@ import { Card } from './classes/Card.js';
 import { Deck } from './classes/Deck.js';
 import * as combat from './combat.js';
 
-const player = new Player(10, 10, 5, 5, 3, 3, 3, null, [], []); // hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand
-const enemy = new Character(15, 15, 5, 5, 3, 2, 1, null, []);
+// TODO: Remove DEF?
+const player = new Player(10, 10, 5, 5, 2, 3, 3, null, [], [], 0); // hp, maxHp, sp, maxSp, atk, def, gold, deck, decks, hand, buffAtk
+const enemy = new Character(15, 15, 5, 5, 3, 2, 1, null, [], 0); // hp, maxHp, sp, maxSp, atk, def, gold, deck, hand, buffAtk
 
+// IDEA: Weapon has set cards based on type. Then, player can add their own cards (magic, buffs, etc?)
 // Note: Combos require a 'spacebar' press at the end!!!
-const testCard1 = new Card("1", "Heavy Slash", "Adds an extra 2 damage to your attack this turn", "buff", "ArrowUp,ArrowRight, ", 2, 3) // id, name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
-const testCard2 = new Card("2", "B", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
-const testCard3 = new Card("1", "Heavy Slash", "Adds an extra 2 damage to your attack this turn", "buff", "'ArrowUp','ArrowRight',' '", 2, 3)
-const testCard4 = new Card("2", "D", "Instantly heals you for 2 HP", "selfheal", "'ArrowUp','ArrowDown','ArrowDown',' '", 2, 2)
+// IDEA: INFINITE BUFF CARD USAGE BUT ONLY ONE ATTACK CARD USAGE
+// IDEA: Always have a normal basic attack available 
+// id, name, desc, type (TBC to action), input (if any), value (how much it will X), STAT COST, STAT TO PAY (HP, SP, GOLD, etc), hitCount (how many times it will hit)
+// Attacks
+const testCard = new Card("1", "Friendship Punch", "Like a normal punch, only.. friendlier..", "Attack", "ArrowUp,ArrowRight, ", 0, 0, "", 1)
+const testCard1 = new Card("2", "Friendship Kick", "Your definition of friendship is really, REALLY weird..", "Attack", "ArrowRight,ArrowRight, ", 0, 0, "", 1) // id, name, desc, type (TBC to action), comboId (if any), value (+/- action), cost (SP)
+
+// Heals
+const testCard2 = new Card("3", "Heel", "I got a bone to pick with you!! (geddit??)", "Heal", "ArrowUp,ArrowDown,ArrowDown, ", 2, 1, "SP", 1)
+const testCard4 = new Card("3", "Heel", "I got a bone to pick with you!! (geddit??)", "Heal", "ArrowUp,ArrowDown,ArrowDown, ", 2, 1, "SP", 1)
+
+// Skills
+// Deal 1xGOLD damage
+const testCard3 = new Card("5", "Finger Guns", "pew pew pew!", "Skill", "ArrowRight,ArrowRight,ArrowRight, ", 2, 1, "GOLD", 0)
+
+// Buffs
+const testCard5 = new Card("4", "Focus 😣", "the time is <b>now</b>", "BuffAtk", "ArrowUp,ArrowDown,ArrowLeft,ArrowRight, ", 3, 2, "SP", 0)
+
 const playerDeck = new Deck("Player Test Deck", "For testing only!", []);
 const enemyDeck = new Deck("Enemy Test Deck", "For testing only!", []);
 
 // Adding cards to deck
-console.log("Adding 4 cards to player deck");
+console.log("Adding 7 cards to player deck");
 console.log("Adding 4 cards to enemy deck");
+playerDeck.addCard(testCard);
 playerDeck.addCard(testCard1);
 playerDeck.addCard(testCard1);
 playerDeck.addCard(testCard2);
 playerDeck.addCard(testCard2);
+playerDeck.addCard(testCard5);
+playerDeck.addCard(testCard3);
 enemyDeck.addCard(testCard3);
 enemyDeck.addCard(testCard3);
 enemyDeck.addCard(testCard4);
@@ -50,15 +69,36 @@ for (let i = 0; i < 3; i++) {
 console.log(" Cards in player's deck: " + player.getDeck().getCardCount())
 console.log(" Cards in player's hand: " + player.getHandCount());
 
+drawHtmlCards();
+
 // Loop to go through hand and display each card in hand[] onscreen
 // TODO: Make a way to have the carvds be clickable
 // TODO: Add a way to track cards (ID?)
-for (let i = 0; i < player.getHandCount(); i++) {
-    let card = player.getCardFromHand(i)
-    console.log(" Looping through Player hand: "+i);
-    document.getElementById('action-cards').innerHTML += 
-    "<td data-id='" + card.getId() +"'value='"+ i +"'class='action-card' data-action='" + card.getType() + "'><b>" + card.getName() +
-    "</b><br><br>Cost: " + card.getCost() + "<br><br>" + card.getDescription() + "</td>";
+function drawHtmlCards() {
+    for (let i = 0; i < player.getHandCount(); i++) {
+        let card = player.getCardFromHand(i);
+        let cardValueSummary = null;
+        console.log(" Looping through Player hand: "+i);
+
+        // if card is basic attack (attached to equipped weapon?) then set dmg to that value too
+        if (card.getType() == "Attack") {
+            card.setValue(player.getAtk()+player.getBuffAtk());
+            cardValueSummary = "<i>Deal " + parseInt(card.getValue()+player.getBuffAtk()) + " damage</i>" + "<br>Basic Attack</td>";
+        } else if (card.getType() == "Heal") {
+            cardValueSummary = "<i>Heal for " + card.getValue() + "</i>" + "<br>Cost: " + card.getCost() + 
+            " " + card.getCostStat() + "</td>";
+        } else if (card.getType() == "BuffAtk") {
+            cardValueSummary = "<i>Add " + card.getValue() + " ATK to your next Basic Attack</i>" + "<br>Cost: " + card.getCost() + 
+            " " + card.getCostStat() + "</td>";
+        } else if (card.getType() == "Skill") {
+            cardValueSummary = "<i>Deal " + card.getValue() + " DMG per " + card.getCost() + " "+ card.getCostStat() + "</i>" + "<br></td>";
+        }
+
+        document.getElementById('action-cards').innerHTML += 
+        "<td data-id='" + card.getId() +"'index='"+ i +"'class='action-card' data-action='" + 
+        card.getType() + "'><b>" + card.getName() + "</b><br><br>" + card.getDescription() + 
+        "<br><br>" + cardValueSummary;
+    }
 }
 
 console.log("");
@@ -74,12 +114,7 @@ for (let i = 0; i < 1; i++) {
 console.log(" Cards in enemy's deck: " + enemy.getDeck().getCardCount())
 console.log(" Cards in enemy's hand: " + enemy.getHandCount())
 
-document.getElementById('player-hp').innerHTML = player.getHp();
-document.getElementById('player-sp').innerHTML = player.getSp();
-document.getElementById('player-atk').innerHTML = player.getAtk();
-document.getElementById('player-def').innerHTML = player.getDef();
-document.getElementById('enemy-hp').innerHTML = enemy.getHp();
-document.getElementById('player-gold').innerHTML = player.getGold();
+updatePageValues();
 
 // Will be filled with the selected card from hand (on website)
 let card = null;
@@ -102,18 +137,25 @@ cardWrapper.addEventListener('click', (event) => {
         let actionType = event.target.getAttribute('data-action');
         
         // So we know which card to actually grab from the hand
-        let cardIndex = event.target.getAttribute('value');
-        console.log("Selected card ID: "+ cardIndex)
+        let cardIndex = event.target.getAttribute('index');
+        console.log("Selected card index in hand: "+ cardIndex)
 
-        if (actionType == "buff") {
+
+        // TODO: Fix to match new types
+        if (actionType == "Attack") {
+            card = player.getCardFromHand(cardIndex);
+            console.log("  Attack card selected");
+            // TODO: Don't pull the card out of array yet. Just get a reference
+        } else if (actionType == "Heal") {
+            card = player.getCardFromHand(cardIndex);
+            console.log("  Heal card selected");
+        } else if (actionType == "Skill") {
+            card = player.getCardFromHand(cardIndex);
+            console.log("  Skill card selected");
+        } else if (actionType == "BuffAtk") {
             card = player.getCardFromHand(cardIndex);
             console.log("  Buff card selected");
-            // TODO: Don't pull the card out of array yet. Just get a reference
-        } else if (actionType == "selfheal") {
-            card = player.getCardFromHand(cardIndex);
-            console.log("  Self heal card selected");
         } 
-        // console.log("  Card Input String: "+ card.getInput());
         event.target.style = "background-color: rgb(211, 234, 255);";    
     } else {
         console.log("Nope");
@@ -136,8 +178,9 @@ adminWrapper.addEventListener('click', (event) => {
             // Make sure they've selected a card for this test!
             if (card) {
                 let c = new AbortController();
-                combat.simulateBuffCardComboAttackFromPlayer(player, enemy, c, card)
+                combat.simulateCardComboFromPlayer(player, enemy, c, card)
             } else {
+                // Heal, focus, friendship kick (use focus first)
                 alert("No card selected!");
                 return;
             }
@@ -178,4 +221,21 @@ function player1Hp() {
 function enemy1Hp() {
     enemy.setHp(1);
     document.getElementById('enemy-hp').innerHTML = enemy.getHp();
+}
+
+// To update the HTML values
+function updatePageValues() {
+    document.getElementById('player-hp').innerHTML = player.getHp();
+    document.getElementById('player-sp').innerHTML = player.getSp();
+
+    if (player.getBuffAtk() == 0) {
+        document.getElementById('player-atk').innerHTML = player.getAtk();
+    } else {
+        document.getElementById('player-atk').innerHTML = player.getAtk() + " (+" + player.getBuffAtk() + ")";
+    }
+
+    document.getElementById('player-def').innerHTML = player.getDef();
+    document.getElementById('enemy-hp').innerHTML = enemy.getHp();
+    document.getElementById('player-gold').innerHTML = player.getGold();
+
 }

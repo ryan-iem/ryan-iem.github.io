@@ -73,7 +73,7 @@ export function simulateFightLoop(player, enemy) {
 }
 
 // COMBO CODES ---
-export function simulateBuffCardComboAttackFromPlayer(player, enemy, c, card) {
+export function simulateCardComboFromPlayer(player, enemy, c, card) {
     // This is really strange and only exists so we can pass parameters into the combo system too (custom arrows/dmg/etc.)
     let signal = c.signal;
 
@@ -85,11 +85,13 @@ export function simulateBuffCardComboAttackFromPlayer(player, enemy, c, card) {
     console.log("Required comboString: "+card.getInput());
     document.getElementById('combo-display').innerHTML = "&nbsp;";
     document.addEventListener('keydown', (event) => {
-        simulateBuffCardComboAttack(player, enemy, c, card);
+        simulateCardCombo(player, enemy, c, card);
+        updatePageValues(player, enemy);
     }, { signal: signal })
+    // drawHtmlCards(player);
 }
-// Simulate keyboard combo feature (for simulateComboAttackFromPlayer)
-export function simulateBuffCardComboAttack(player, enemy, c, card) {
+// Simulate keyboard combo feature (for simulateBuffCardComboAttackFromPlayer)
+export function simulateCardCombo(player, enemy, c, card) {
     let comboString = card.getInput().split(",");  // The last value is the DMG value
     let keyCountLimit = card.getInput().split(",").length;  // The last value is the DMG value
     console.log(event.key);
@@ -111,6 +113,7 @@ export function simulateBuffCardComboAttack(player, enemy, c, card) {
             }
 
             document.getElementById('combo-display').innerHTML += key + " ";
+            // TODO, not remove basic attack cards
             if (keyCount == keyCountLimit) {
                 keyCount = 0;
                 let cardId = card.getId();
@@ -118,9 +121,34 @@ export function simulateBuffCardComboAttack(player, enemy, c, card) {
                 console.log("")
                 c.abort();
 
+                // CHANGE DEPENDING ON WHAT CARD IS BEING PLAYED
                 // Since we are simulating usage of a buff card, append buff value to base ATK
-                attack(player, enemy, player.getAtk()+card.getValue());
-
+                if (card.getType() == "Attack") { // for basic attacks (which can be buffed)
+                    attackEnemy(player, enemy, player.getAtk()+player.getBuffAtk());
+                } else if (card.getType() == "Heal") {
+                    player.receiveHp(card.getValue());
+                } else if (card.getType() == "Skill") {
+                    if (card.getCostStat() == "GOLD") {
+                        // For a card that hits for every 1 gold
+                        let hitCount = player.getGold();
+                        player.setGold(0);
+                        for (let i = 0; i < hitCount; i++) {
+                            attackEnemy(player, enemy, card.getValue());
+                            console.log("Hit: " + hitCount);
+                        }
+                    }          
+                } else if (card.getType() == "BuffAtk") {
+                    // Check if the buff has been added before (hitcount would be anything but 0). this is very very bad code but it works. tbf later
+                    if (card.getHitCount() == 0) {
+                        card.setHitCount(100);
+                        let buffValue = card.getValue();
+                        player.setBuffAtk(buffValue)
+                    } else {
+                        attackEnemy(player, enemy, player.getAtk()+player.getBuffAtk());
+                        player.setBuffAtk(0)
+                        updatePageValues();
+                    }
+                }
                 // TODO: Remove card from hand after this
                 // If multiple copies of one card, find first hit and just delete that
                 console.log("  Card to remove: "+ card.getName())
@@ -308,7 +336,7 @@ export function simulateAttackFromPlayer(player, enemy) {
 
 }
 
-// Simulate a battle (attacking one another) with set damage value (for skills)
+// Simulate an attack (from one another) with set damage value (for skills)
 export function attack(player, enemy, damage) {
     // while (fightLoop) { // While enemy and player are still alive
         if (enemy.getHp() > 0 && player.getHp() > 0) { // Check if everyone is alive
@@ -346,6 +374,43 @@ export function attack(player, enemy, damage) {
                     } else {
                         alert("The enemy attack misses too!")
                     }
+            }
+
+        } else { 
+            // Check to see who exactly is dead
+            if (enemy.getHp() == 0) {
+                alert("The enemy has been slain!")
+                fightLoop = false
+            } else if (player.getHp() == 0) {
+                alert("YOU HAVE BEEN SLAIN")
+                fightLoop = false
+            }
+        }
+
+        // player.attack(enemy);
+        // alert("The enemy has " + enemy.getHp() + " HP remaining!")
+        // player.attack(enemy);
+        // alert("The enemy has " + enemy.getHp() + " HP remaining!")
+        document.getElementById('player-hp').innerHTML = player.getHp();
+        document.getElementById('enemy-hp').innerHTML = enemy.getHp();
+    // }
+}
+
+// Simulate ONLY ONE ATTACK (attacking enemy) with set damage value (for skills)
+export function attackEnemy(player, enemy, damage) {
+    // while (fightLoop) { // While enemy and player are still alive
+        if (enemy.getHp() > 0 && player.getHp() > 0) { // Check if everyone is alive
+        // alert("Turn: " + turnCount)
+        let chance = Math.random();
+            // Player attacks first (for now)
+            if (chance > 0.25) { // 25% chance to miss and 75% chance to hit
+
+                enemy.receiveDamage(damage);
+                alert("The enemy takes " + damage + " damage!")
+                // alert("The enemy has " + enemy.getHp() + " HP remaining!")
+
+            } else { // attack missed!
+                alert("Your attack misses!")
             }
 
         } else { 
@@ -432,3 +497,58 @@ export function simulateAttackFromBoth(player, enemy) {
     document.getElementById('enemy-hp').innerHTML = enemy.getHp();
 
 }
+
+// To update the HTML values
+function updatePageValues(player, enemy) {
+    document.getElementById('player-hp').innerHTML = player.getHp();
+    document.getElementById('player-sp').innerHTML = player.getSp();
+
+    if (player.getBuffAtk() == 0) {
+        document.getElementById('player-atk').innerHTML = player.getAtk();
+    } else {
+        document.getElementById('player-atk').innerHTML = player.getAtk() + " (+" + player.getBuffAtk() + ")";
+    }
+
+    document.getElementById('player-def').innerHTML = player.getDef();
+    document.getElementById('enemy-hp').innerHTML = enemy.getHp();
+    document.getElementById('player-gold').innerHTML = player.getGold();
+
+    // Need to updated the page hand index at all times to match index in JS
+    let i = 0;
+    while (i < player.getHandCount()) {
+        let htmlCards = document.querySelectorAll('.action-card');
+        // Iterate over the elements to update their value
+        for (const htmlCard of htmlCards) {
+            htmlCard.setAttribute('index', i);
+            i++;
+        }
+    }
+}
+
+// TODO: Redraw these damn cards!!
+// function drawHtmlCards(player) {
+//     for (let i = 0; i < player.getHandCount(); i++) {
+//         let card = player.getCardFromHand(i);
+//         let cardValueSummary = null;
+//         console.log(" Looping through Player hand: "+i);
+
+//         // if card is basic attack (attached to equipped weapon?) then set dmg to that value too
+//         if (card.getType() == "Attack") {
+//             card.setValue(player.getAtk()+player.getBuffAtk());
+//             cardValueSummary = "<i>Deal " + parseInt(card.getValue()+player.getBuffAtk()) + " damage</i>" + "<br>Basic Attack</td>";
+//         } else if (card.getType() == "Heal") {
+//             cardValueSummary = "<i>Heal for " + card.getValue() + "</i>" + "<br>Cost: " + card.getCost() + 
+//             " " + card.getCostStat() + "</td>";
+//         } else if (card.getType() == "BuffAtk") {
+//             cardValueSummary = "<i>Add " + card.getValue() + " ATK to your next Basic Attack</i>" + "<br>Cost: " + card.getCost() + 
+//             " " + card.getCostStat() + "</td>";
+//         } else if (card.getType() == "Skill") {
+//             cardValueSummary = "<i>Deal " + card.getValue() + " DMG per " + card.getCost() + " "+ card.getCostStat() + "</i>" + "<br></td>";
+//         }
+
+//         document.getElementById('action-cards').innerHTML += 
+//         "<td data-id='" + card.getId() +"'index='"+ i +"'class='action-card' data-action='" + 
+//         card.getType() + "'><b>" + card.getName() + "</b><br><br>" + card.getDescription() + 
+//         "<br><br>" + cardValueSummary;
+//     }
+// }
