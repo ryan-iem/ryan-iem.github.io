@@ -51,6 +51,7 @@ function changeSection(selection) {
             document.getElementById("profile-topic-content-" + j).style = "display: none";
         }
 
+        document.getElementById("resume-scroll-arrow").style.animation = "fadeInDelay 1s ease, fadeIn 3s ease 1s, fadeOutHeader 2s ease 3s" // first animation, time, type, second animation, time, type, delay
         document.getElementById("profile-topic").style = "display: ''"; // fix
         document.getElementById("profile-topic-1").style = "text-decoration: underline; text-decoration-color: #7cb2db; text-underline-offset: 6px;";
         document.getElementById("profile-topic-content-1").style = "display: ''";
@@ -59,7 +60,7 @@ function changeSection(selection) {
 
         // document.getElementById("profile-section-content-2-badge").style = "display: ''";
     } else if (selection == 4) { // if Projects section (all this just for the damn fading animation bruhh)
-        document.getElementById("project-scroll-arrow").style.animation = "fadeInDelay 1s ease, fadeIn 3s ease 1s, fadeOutHeader 2s ease 3s" // first animation, time, type, second animation, time, type, delay
+        document.getElementById("scroll-arrow").style.animation = "fadeInDelay 1s ease, fadeIn 3s ease 1s, fadeOutHeader 2s ease 3s" // first animation, time, type, second animation, time, type, delay
         for (i = 1; i <= 5; i++) {
             document.getElementById("profile-section-content-" + i).style = "display: none";
             // alert("hehe")
