@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
@@ -165,13 +166,15 @@
             </tr>
             <tr id="profile-topic-content-4" style="display:none">
                 <td colspan="4">
-                    <h3>Event Staff</h3>
-                    <p>Evolution Championship Series (Japan)</p>
-                    <small>Apr 2024</small>
-                    <hr class="topic-hr">
-                    <h3>Festival Staff</h3>
-                    <p>Melbourne Japanese Summer Festival</p>
-                    <small>Feb 2019</small>
+                    <div id="profile-topic-content-4-line">
+                        <h3>Event Staff</h3>
+                        <p>Evolution Championship Series (Japan)</p>
+                        <small>Apr 2024</small>
+                        <hr class="topic-hr">
+                        <h3>Festival Staff</h3>
+                        <p>Melbourne Japanese Summer Festival</p>
+                        <small>Feb 2019</small>
+                    </div>
                 </td>
             </tr>
         </tr>
@@ -227,7 +230,19 @@
         <!-- TBD: Contact -->
         <tr id="profile-section-content-5" style="display:none">
             <td>
-                <p>In progress :)</p>
+                <p>Email</p>
+                <small title="Click to copy" id="email-contact" onclick="copyEmail()">ryan.iem12@gmail.com</small> <i class="fa fa-copy"></i>
+            <br><br>
+                <p>Phone</p> 
+                <small title="Click to copy" id="phone-contact" onclick="copyPhone()">0423 053 370</small> <i class="fa fa-copy"></i>
+            <br><br>
+                <p>LinkedIn</p>
+                <a id="linkedin-link" href="https://www.linkedin.com/in/ryan-iem/" target="_blank" rel="noopener noreferrer"><small>https://www.linkedin.com/in/ryan-iem/</small></a> <i class="fa fa-linkedin"></i>
+            <br><br>
+                <p>GitHub</p>
+                <a id="github-link" href="https://github.com/ryan-iem" target="_blank" rel="noopener noreferrer"><small>https://github.com/ryan-iem</small></a> <i class="fa fa-github"></i>
+            <hr class="topic-hr">
+                <a href="./documents/Ryan Iem - Resume.pdf" download>Download Resume</a> <i class="fa fa-download"></i>
             </td>
         </tr>
 

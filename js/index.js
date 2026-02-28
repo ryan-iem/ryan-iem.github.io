@@ -102,6 +102,22 @@ function changeTopic(selection) {
     document.getElementById("profile-topic-content-" + selection).style.animation = "fadeIn 1s";
 }
 
+function copyEmail() {
+    // Get the text from the element
+    const textToCopy = document.getElementById('email-contact').textContent;
+
+    // Use the Clipboard API to copy text
+    navigator.clipboard.writeText(textToCopy);
+}
+
+function copyPhone() {
+    // Get the text from the element
+    const textToCopy = "0423053370";
+
+    // Use the Clipboard API to copy text
+    navigator.clipboard.writeText(textToCopy);
+}
+
 // uhhh is this needed lol. maybe dont use hrefs that link back to itself
     // alert("made it");
 
